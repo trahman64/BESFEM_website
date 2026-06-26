@@ -1,0 +1,28 @@
+var searchData=
+[
+  ['raw_5ffespace_0',['raw_fespace',['../classFEMOperators.html#a776f387ad041f8bd522a8a11450c995d',1,'FEMOperators']]],
+  ['reaction_1',['Reaction',['../classReaction.html',1,'Reaction'],['../classReaction.html#a13665863f816a77cfcb920aa7c2c73c0',1,'Reaction::Reaction()']]],
+  ['reaction_2',['reaction',['../structSimulationState.html#a2bf23bfdb87873a5275f6fbaf5cbfaf5',1,'SimulationState::reaction'],['../structAnodeParticleState.html#a95914777f42e768af7655d582053836d',1,'AnodeParticleState::reaction'],['../structCathodeParticleState.html#a5886b8b542417767628d72b660786f0f',1,'CathodeParticleState::reaction']]],
+  ['reaction_2ecpp_3',['Reaction.cpp',['../Reaction_8cpp.html',1,'']]],
+  ['reaction_2ehpp_4',['Reaction.hpp',['../Reaction_8hpp.html',1,'']]],
+  ['readconfigfile_5',['ReadConfigFile',['../SimulationConfig_8cpp.html#a7f6e7f02bd425cf0555d3abdc74cae4c',1,'SimulationConfig.cpp']]],
+  ['readinfo_6',['readinfo',['../classTIFFReader.html#a7bc33410bd535869a40d1b577b1e1866',1,'TIFFReader']]],
+  ['readtiff_2ecpp_7',['readtiff.cpp',['../readtiff_8cpp.html',1,'']]],
+  ['readtiff_2eh_8',['readtiff.h',['../readtiff_8h.html',1,'']]],
+  ['readtifffields_9',['readTIFFFields',['../classTIFFReader.html#af3dd672d1acc5c4793c047dc181335a5',1,'TIFFReader']]],
+  ['readtifffile_10',['ReadTiffFile',['../classInitialize__Geometry.html#a8fc99a2a4fde259dba537a484b7e3ead',1,'Initialize_Geometry']]],
+  ['rhce_11',['RHCe',['../classElectrolyteDiffusion.html#acace92a85228619000ee744b59125e24',1,'ElectrolyteDiffusion']]],
+  ['rhcp_12',['RHCp',['../classElectrodeCahnHilliard.html#aed6a590923b93702b5577b2e68c1033f',1,'ElectrodeCahnHilliard::RHCp'],['../classElectrodeDiffusion.html#a3fc3244568e810d5cafcd1a6c9741459',1,'ElectrodeDiffusion::RHCp']]],
+  ['rhsl_13',['RHSl',['../classElectrolytePotential.html#a903f6f6110c8c74cfa836e0bf7532179',1,'ElectrolytePotential']]],
+  ['rkpp_14',['rkpp',['../classBoundaryConditions.html#a15c426f730c93eb88da18e87d4b03aeb',1,'BoundaryConditions::rkpp'],['../classInitialize__Geometry.html#afb4ba5aa08cfa25fdac7966d68a79877',1,'Initialize_Geometry::rkpp'],['../classElectrolytePotential.html#ac9fe5cbd3a4790f9ae2f7cd176690850',1,'ElectrolytePotential::rkpp']]],
+  ['row_5fbegin_15',['Row_begin',['../structConstraints.html#a2a6217a3bc2ffe6fd0725c323c9af169',1,'Constraints']]],
+  ['row_5fend_16',['Row_end',['../structConstraints.html#a3045ffc77f43b8bbc5870f68a6d21519',1,'Constraints']]],
+  ['rpe_17',['RpE',['../classElectrolytePotential.html#a8444506ebe3213fe3b7a59b36c7a1e6d',1,'ElectrolytePotential']]],
+  ['rpp_18',['RpP',['../classElectrodePotential.html#a4c0a61e7d8b4152ab09d2459426e45d8',1,'ElectrodePotential']]],
+  ['rt_19',['RT',['../namespaceConstants.html#ac45056c17d77d7e93e9ee884258b9157',1,'Constants']]],
+  ['rx_5fsrc_20',['Rx_src',['../structAnodeParticleState.html#af04cda107a7fc763f7e18d713c05e783',1,'AnodeParticleState::Rx_src'],['../structCathodeParticleState.html#a02fff064a036d05599f9ac03a1e15560',1,'CathodeParticleState::Rx_src']]],
+  ['rxa_21',['RxA',['../classElectrodeCahnHilliard.html#a3d1b9ff77c1b27e2bb327a1ecf748930',1,'ElectrodeCahnHilliard']]],
+  ['rxe_22',['Rxe',['../classElectrolyteDiffusion.html#ac9a1351e54b164e8afc83516a50a3bcd',1,'ElectrolyteDiffusion']]],
+  ['rxn_23',['Rxn',['../classElectrodeDiffusion.html#aeba300f873839e3b1b53c39a47ad8883',1,'ElectrodeDiffusion']]],
+  ['rxn_5fgf_24',['Rxn_gf',['../structAnodeParticleState.html#ad4ea824d94b675987f30aaea78af8566',1,'AnodeParticleState::Rxn_gf'],['../structCathodeParticleState.html#a25c986d0672bbecda6049d133bdb7051',1,'CathodeParticleState::Rxn_gf'],['../structSimulationState.html#a3d62d7f909d569cb81a8b81274a6c937',1,'SimulationState::Rxn_gf']]]
+];

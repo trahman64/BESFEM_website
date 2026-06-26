@@ -1,8 +1,8 @@
-title: Just the Docs Template
-description: A starter template for a Jeykll site using the Just the Docs theme!
+title: BESFEM
+description: Battery Electrode Simulation Finite Electrode Method
 theme: just-the-docs
 
-url: https://just-the-docs.github.io
-
+url: "https://trahman64.github.io"
+baseurl: "/BESFEM_WEBSITE"
 aux_links:
-  Template Repository: https://github.com/just-the-docs/just-the-docs-template
+  GitHub Repository: https://github.com/HCY-Group/BESFEM

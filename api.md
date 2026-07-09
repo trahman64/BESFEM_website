@@ -8,4 +8,6 @@ nav_order: 8
 
 The BESFEM API reference is generated automatically using Doxygen.
 
-**[Open the API Documentation](./api/)**
+<a href="{{ '/api/' | relative_url }}" target="_blank" rel="noopener">
+  API Documentation
+</a>

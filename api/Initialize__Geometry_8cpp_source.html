@@ -721,477 +721,462 @@ $(function() {
 <div class="line"><a id="l00641" name="l00641"></a><span class="lineno">  641</span>    args.<a class="code hl_variable" href="structConstraints.html#abe46b09f46e5ba27c2aaee5704c9b535">Column_end</a>   = 100;</div>
 <div class="line"><a id="l00642" name="l00642"></a><span class="lineno">  642</span>    <a class="code hl_class" href="classTIFFReader.html">TIFFReader</a> reader(meshFile,args);</div>
 <div class="line"><a id="l00643" name="l00643"></a><span class="lineno">  643</span>    reader.<a class="code hl_function" href="classTIFFReader.html#a7bc33410bd535869a40d1b577b1e1866">readinfo</a>();</div>
-<div class="line"><a id="l00644" name="l00644"></a><span class="lineno">  644</span>    <span class="keywordtype">int</span> num_labels = reader.<a class="code hl_function" href="classTIFFReader.html#a1e5238de99bff4b595a6dbb548712d35">getNumParticleLabel</a>();</div>
-<div class="line"><a id="l00645" name="l00645"></a><span class="lineno">  645</span> </div>
-<div class="line"><a id="l00646" name="l00646"></a><span class="lineno">  646</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classInitialize__Geometry.html#aec4d6c4f31304a3284db8a39086ff0b0">cfg</a>.<a class="code hl_variable" href="structSimulationConfig.html#ac9fbc9409184184ca0378a701ec461be">cathode_materials</a>.size() != num_labels)</div>
-<div class="line"><a id="l00647" name="l00647"></a><span class="lineno">  647</span>    {</div>
-<div class="line"><a id="l00648" name="l00648"></a><span class="lineno">  648</span>        mfem::mfem_error(</div>
-<div class="line"><a id="l00649" name="l00649"></a><span class="lineno">  649</span>            <span class="stringliteral">&quot;Number of cathode_materials in config.txt must match the number of particle labels in the TIFF.&quot;</span></div>
-<div class="line"><a id="l00650" name="l00650"></a><span class="lineno">  650</span>        );</div>
-<div class="line"><a id="l00651" name="l00651"></a><span class="lineno">  651</span>    }</div>
-<div class="line"><a id="l00652" name="l00652"></a><span class="lineno">  652</span>    </div>
-<div class="line"><a id="l00653" name="l00653"></a><span class="lineno">  653</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classInitialize__Geometry.html#aec4d6c4f31304a3284db8a39086ff0b0">cfg</a>.<a class="code hl_variable" href="structSimulationConfig.html#a65aa81799d69eaff58ef401a8f7e8918">init_cathode_particles</a>.size() != num_labels)</div>
-<div class="line"><a id="l00654" name="l00654"></a><span class="lineno">  654</span>    {</div>
-<div class="line"><a id="l00655" name="l00655"></a><span class="lineno">  655</span>        mfem::mfem_error(</div>
-<div class="line"><a id="l00656" name="l00656"></a><span class="lineno">  656</span>            <span class="stringliteral">&quot;Number of init_cathode_particles in config.txt must match the number of particle labels in the TIFF.&quot;</span></div>
-<div class="line"><a id="l00657" name="l00657"></a><span class="lineno">  657</span>        );</div>
-<div class="line"><a id="l00658" name="l00658"></a><span class="lineno">  658</span>    }</div>
-<div class="line"><a id="l00659" name="l00659"></a><span class="lineno">  659</span>    std::vector&lt;std::vector&lt;std::vector&lt;int&gt;&gt;&gt; <a class="code hl_variable" href="classInitialize__Geometry.html#a27aeeb194755111fc32cab304b089a77">tiffData</a>;</div>
-<div class="line"><a id="l00660" name="l00660"></a><span class="lineno">  660</span>    <a class="code hl_variable" href="classInitialize__Geometry.html#a27aeeb194755111fc32cab304b089a77">tiffData</a> = reader.<a class="code hl_function" href="classTIFFReader.html#a8f158fc798c7966aa45ee0428ff193e2">getImageData</a>();</div>
+<div class="line"><a id="l00644" name="l00644"></a><span class="lineno">  644</span>    std::vector&lt;std::vector&lt;std::vector&lt;int&gt;&gt;&gt; <a class="code hl_variable" href="classInitialize__Geometry.html#a27aeeb194755111fc32cab304b089a77">tiffData</a>;</div>
+<div class="line"><a id="l00645" name="l00645"></a><span class="lineno">  645</span>    <a class="code hl_variable" href="classInitialize__Geometry.html#a27aeeb194755111fc32cab304b089a77">tiffData</a> = reader.<a class="code hl_function" href="classTIFFReader.html#a8f158fc798c7966aa45ee0428ff193e2">getImageData</a>();</div>
+<div class="line"><a id="l00646" name="l00646"></a><span class="lineno">  646</span> </div>
+<div class="line"><a id="l00647" name="l00647"></a><span class="lineno">  647</span>    <a class="code hl_function" href="classInitialize__Geometry.html#a76eec0a2d9e1667ea3d0cfb6320fff9f">SaveTiffDataToPGM</a>(<a class="code hl_variable" href="classInitialize__Geometry.html#a27aeeb194755111fc32cab304b089a77">tiffData</a>, <span class="stringliteral">&quot;tiff_debug.pgm&quot;</span>);</div>
+<div class="line"><a id="l00648" name="l00648"></a><span class="lineno">  648</span> </div>
+<div class="line"><a id="l00649" name="l00649"></a><span class="lineno">  649</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="classInitialize__Geometry.html#a27aeeb194755111fc32cab304b089a77">tiffData</a>;</div>
+<div class="line"><a id="l00650" name="l00650"></a><span class="lineno">  650</span>}</div>
+<div class="line"><a id="l00651" name="l00651"></a><span class="lineno">  651</span> </div>
+<div class="line"><a id="l00652" name="l00652"></a><span class="lineno">  652</span><span class="comment">// Create a global MFEM mesh from voxel data extracted from .tif file</span></div>
+<div class="line"><a id="l00653" name="l00653"></a><span class="lineno"><a class="line" href="classInitialize__Geometry.html#a91d68314ac32fc21d8e609f7f7d1ded3">  653</a></span>std::unique_ptr&lt;mfem::Mesh&gt; <a class="code hl_function" href="classInitialize__Geometry.html#a91d68314ac32fc21d8e609f7f7d1ded3">Initialize_Geometry::CreateGlobalMeshFromTiffData</a>(<span class="keyword">const</span> std::vector&lt;std::vector&lt;std::vector&lt;int&gt;&gt;&gt;&amp; tiffData) {</div>
+<div class="line"><a id="l00654" name="l00654"></a><span class="lineno">  654</span>    <span class="keywordtype">int</span> nz = <a class="code hl_variable" href="classInitialize__Geometry.html#a27aeeb194755111fc32cab304b089a77">tiffData</a>.size(); <span class="comment">// depth dimension</span></div>
+<div class="line"><a id="l00655" name="l00655"></a><span class="lineno">  655</span>    <span class="keywordtype">int</span> ny = <a class="code hl_variable" href="classInitialize__Geometry.html#a27aeeb194755111fc32cab304b089a77">tiffData</a>[0].size(); <span class="comment">// row dimension</span></div>
+<div class="line"><a id="l00656" name="l00656"></a><span class="lineno">  656</span>    <span class="keywordtype">int</span> nx = <a class="code hl_variable" href="classInitialize__Geometry.html#a27aeeb194755111fc32cab304b089a77">tiffData</a>[0][0].size(); <span class="comment">// column dimension</span></div>
+<div class="line"><a id="l00657" name="l00657"></a><span class="lineno">  657</span> </div>
+<div class="line"><a id="l00658" name="l00658"></a><span class="lineno">  658</span>    <span class="comment">// std::cout &lt;&lt; &quot;nz: &quot; &lt;&lt; nz &lt;&lt; &quot; nx: &quot; &lt;&lt; nx &lt;&lt; &quot; ny: &quot; &lt;&lt; ny &lt;&lt; std::endl;</span></div>
+<div class="line"><a id="l00659" name="l00659"></a><span class="lineno">  659</span> </div>
+<div class="line"><a id="l00660" name="l00660"></a><span class="lineno">  660</span>    <span class="keywordtype">double</span> scale = <a class="code hl_variable" href="classInitialize__Geometry.html#aec4d6c4f31304a3284db8a39086ff0b0">cfg</a>.<a class="code hl_variable" href="structSimulationConfig.html#acd7e811788fa197e96c59247d660f71a">dh</a>;</div>
 <div class="line"><a id="l00661" name="l00661"></a><span class="lineno">  661</span> </div>
-<div class="line"><a id="l00662" name="l00662"></a><span class="lineno">  662</span>    <a class="code hl_function" href="classInitialize__Geometry.html#a76eec0a2d9e1667ea3d0cfb6320fff9f">SaveTiffDataToPGM</a>(<a class="code hl_variable" href="classInitialize__Geometry.html#a27aeeb194755111fc32cab304b089a77">tiffData</a>, <span class="stringliteral">&quot;tiff_debug.pgm&quot;</span>);</div>
-<div class="line"><a id="l00663" name="l00663"></a><span class="lineno">  663</span> </div>
-<div class="line"><a id="l00664" name="l00664"></a><span class="lineno">  664</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="classInitialize__Geometry.html#a27aeeb194755111fc32cab304b089a77">tiffData</a>;</div>
-<div class="line"><a id="l00665" name="l00665"></a><span class="lineno">  665</span>}</div>
-<div class="line"><a id="l00666" name="l00666"></a><span class="lineno">  666</span> </div>
-<div class="line"><a id="l00667" name="l00667"></a><span class="lineno">  667</span><span class="comment">// Create a global MFEM mesh from voxel data extracted from .tif file</span></div>
-<div class="line"><a id="l00668" name="l00668"></a><span class="lineno"><a class="line" href="classInitialize__Geometry.html#a91d68314ac32fc21d8e609f7f7d1ded3">  668</a></span>std::unique_ptr&lt;mfem::Mesh&gt; <a class="code hl_function" href="classInitialize__Geometry.html#a91d68314ac32fc21d8e609f7f7d1ded3">Initialize_Geometry::CreateGlobalMeshFromTiffData</a>(<span class="keyword">const</span> std::vector&lt;std::vector&lt;std::vector&lt;int&gt;&gt;&gt;&amp; tiffData) {</div>
-<div class="line"><a id="l00669" name="l00669"></a><span class="lineno">  669</span>    <span class="keywordtype">int</span> nz = <a class="code hl_variable" href="classInitialize__Geometry.html#a27aeeb194755111fc32cab304b089a77">tiffData</a>.size(); <span class="comment">// depth dimension</span></div>
-<div class="line"><a id="l00670" name="l00670"></a><span class="lineno">  670</span>    <span class="keywordtype">int</span> ny = <a class="code hl_variable" href="classInitialize__Geometry.html#a27aeeb194755111fc32cab304b089a77">tiffData</a>[0].size(); <span class="comment">// row dimension</span></div>
-<div class="line"><a id="l00671" name="l00671"></a><span class="lineno">  671</span>    <span class="keywordtype">int</span> nx = <a class="code hl_variable" href="classInitialize__Geometry.html#a27aeeb194755111fc32cab304b089a77">tiffData</a>[0][0].size(); <span class="comment">// column dimension</span></div>
-<div class="line"><a id="l00672" name="l00672"></a><span class="lineno">  672</span> </div>
-<div class="line"><a id="l00673" name="l00673"></a><span class="lineno">  673</span>    <span class="comment">// std::cout &lt;&lt; &quot;nz: &quot; &lt;&lt; nz &lt;&lt; &quot; nx: &quot; &lt;&lt; nx &lt;&lt; &quot; ny: &quot; &lt;&lt; ny &lt;&lt; std::endl;</span></div>
-<div class="line"><a id="l00674" name="l00674"></a><span class="lineno">  674</span> </div>
-<div class="line"><a id="l00675" name="l00675"></a><span class="lineno">  675</span>    <span class="keywordtype">double</span> scale = <a class="code hl_variable" href="classInitialize__Geometry.html#aec4d6c4f31304a3284db8a39086ff0b0">cfg</a>.<a class="code hl_variable" href="structSimulationConfig.html#acd7e811788fa197e96c59247d660f71a">dh</a>;</div>
+<div class="line"><a id="l00662" name="l00662"></a><span class="lineno">  662</span>    <span class="keywordtype">double</span> sx = nx * scale;  <span class="comment">// make dx = 1 // size in x direction</span></div>
+<div class="line"><a id="l00663" name="l00663"></a><span class="lineno">  663</span>    <span class="keywordtype">double</span> sy = ny * scale;  <span class="comment">// make dy = 1 // size in y direction</span></div>
+<div class="line"><a id="l00664" name="l00664"></a><span class="lineno">  664</span>    <span class="keywordtype">double</span> sz = nz * scale;  <span class="comment">// make dz = 1 // size in z direction</span></div>
+<div class="line"><a id="l00665" name="l00665"></a><span class="lineno">  665</span> </div>
+<div class="line"><a id="l00666" name="l00666"></a><span class="lineno">  666</span>    <span class="comment">// std::cout &lt;&lt; &quot;sz: &quot; &lt;&lt; sz &lt;&lt; &quot; sx: &quot; &lt;&lt; sx &lt;&lt; &quot; sy: &quot; &lt;&lt; sy &lt;&lt; std::endl;</span></div>
+<div class="line"><a id="l00667" name="l00667"></a><span class="lineno">  667</span> </div>
+<div class="line"><a id="l00668" name="l00668"></a><span class="lineno">  668</span>    <span class="keywordtype">int</span> ex = (nx - 1) / 2;</div>
+<div class="line"><a id="l00669" name="l00669"></a><span class="lineno">  669</span>    <span class="keywordtype">int</span> ey = (ny - 1) / 2;</div>
+<div class="line"><a id="l00670" name="l00670"></a><span class="lineno">  670</span>    <span class="keywordtype">int</span> ez = (nz == 1) ? 1 : (nz - 1) / 2;</div>
+<div class="line"><a id="l00671" name="l00671"></a><span class="lineno">  671</span> </div>
+<div class="line"><a id="l00672" name="l00672"></a><span class="lineno">  672</span>    <span class="comment">// std::cout &lt;&lt; &quot;ez: &quot; &lt;&lt; ez &lt;&lt; &quot; ex: &quot; &lt;&lt; ex &lt;&lt; &quot; ey: &quot; &lt;&lt; ey &lt;&lt; std::endl;</span></div>
+<div class="line"><a id="l00673" name="l00673"></a><span class="lineno">  673</span> </div>
+<div class="line"><a id="l00674" name="l00674"></a><span class="lineno">  674</span>    <span class="keywordtype">bool</span> generate_edges = <span class="keyword">false</span>; </div>
+<div class="line"><a id="l00675" name="l00675"></a><span class="lineno">  675</span>    <span class="keywordtype">bool</span> sfc_ordering = <span class="keyword">false</span>; </div>
 <div class="line"><a id="l00676" name="l00676"></a><span class="lineno">  676</span> </div>
-<div class="line"><a id="l00677" name="l00677"></a><span class="lineno">  677</span>    <span class="keywordtype">double</span> sx = nx * scale;  <span class="comment">// make dx = 1 // size in x direction</span></div>
-<div class="line"><a id="l00678" name="l00678"></a><span class="lineno">  678</span>    <span class="keywordtype">double</span> sy = ny * scale;  <span class="comment">// make dy = 1 // size in y direction</span></div>
-<div class="line"><a id="l00679" name="l00679"></a><span class="lineno">  679</span>    <span class="keywordtype">double</span> sz = nz * scale;  <span class="comment">// make dz = 1 // size in z direction</span></div>
-<div class="line"><a id="l00680" name="l00680"></a><span class="lineno">  680</span> </div>
-<div class="line"><a id="l00681" name="l00681"></a><span class="lineno">  681</span>    <span class="comment">// std::cout &lt;&lt; &quot;sz: &quot; &lt;&lt; sz &lt;&lt; &quot; sx: &quot; &lt;&lt; sx &lt;&lt; &quot; sy: &quot; &lt;&lt; sy &lt;&lt; std::endl;</span></div>
-<div class="line"><a id="l00682" name="l00682"></a><span class="lineno">  682</span> </div>
-<div class="line"><a id="l00683" name="l00683"></a><span class="lineno">  683</span>    <span class="keywordtype">int</span> ex = (nx - 1) / 2;</div>
-<div class="line"><a id="l00684" name="l00684"></a><span class="lineno">  684</span>    <span class="keywordtype">int</span> ey = (ny - 1) / 2;</div>
-<div class="line"><a id="l00685" name="l00685"></a><span class="lineno">  685</span>    <span class="keywordtype">int</span> ez = (nz == 1) ? 1 : (nz - 1) / 2;</div>
-<div class="line"><a id="l00686" name="l00686"></a><span class="lineno">  686</span> </div>
-<div class="line"><a id="l00687" name="l00687"></a><span class="lineno">  687</span>    <span class="comment">// std::cout &lt;&lt; &quot;ez: &quot; &lt;&lt; ez &lt;&lt; &quot; ex: &quot; &lt;&lt; ex &lt;&lt; &quot; ey: &quot; &lt;&lt; ey &lt;&lt; std::endl;</span></div>
+<div class="line"><a id="l00677" name="l00677"></a><span class="lineno">  677</span>    std::unique_ptr&lt;mfem::Mesh&gt; mesh;</div>
+<div class="line"><a id="l00678" name="l00678"></a><span class="lineno">  678</span> </div>
+<div class="line"><a id="l00679" name="l00679"></a><span class="lineno">  679</span>    <span class="keywordflow">if</span> (nz == 1) {</div>
+<div class="line"><a id="l00680" name="l00680"></a><span class="lineno">  680</span>        mesh = std::make_unique&lt;mfem::Mesh&gt;(</div>
+<div class="line"><a id="l00681" name="l00681"></a><span class="lineno">  681</span>            mfem::Mesh::MakeCartesian2D(ex, ey, mfem::Element::QUADRILATERAL, generate_edges, sx, sy, sfc_ordering)</div>
+<div class="line"><a id="l00682" name="l00682"></a><span class="lineno">  682</span>        );</div>
+<div class="line"><a id="l00683" name="l00683"></a><span class="lineno">  683</span>    } <span class="keywordflow">else</span> {</div>
+<div class="line"><a id="l00684" name="l00684"></a><span class="lineno">  684</span>        mesh = std::make_unique&lt;mfem::Mesh&gt;(</div>
+<div class="line"><a id="l00685" name="l00685"></a><span class="lineno">  685</span>            mfem::Mesh::MakeCartesian3D(ex, ey, ez, mfem::Element::HEXAHEDRON, sx, sy, sz, sfc_ordering)</div>
+<div class="line"><a id="l00686" name="l00686"></a><span class="lineno">  686</span>        );</div>
+<div class="line"><a id="l00687" name="l00687"></a><span class="lineno">  687</span>    }</div>
 <div class="line"><a id="l00688" name="l00688"></a><span class="lineno">  688</span> </div>
-<div class="line"><a id="l00689" name="l00689"></a><span class="lineno">  689</span>    <span class="keywordtype">bool</span> generate_edges = <span class="keyword">false</span>; </div>
-<div class="line"><a id="l00690" name="l00690"></a><span class="lineno">  690</span>    <span class="keywordtype">bool</span> sfc_ordering = <span class="keyword">false</span>; </div>
-<div class="line"><a id="l00691" name="l00691"></a><span class="lineno">  691</span> </div>
-<div class="line"><a id="l00692" name="l00692"></a><span class="lineno">  692</span>    std::unique_ptr&lt;mfem::Mesh&gt; mesh;</div>
-<div class="line"><a id="l00693" name="l00693"></a><span class="lineno">  693</span> </div>
-<div class="line"><a id="l00694" name="l00694"></a><span class="lineno">  694</span>    <span class="keywordflow">if</span> (nz == 1) {</div>
-<div class="line"><a id="l00695" name="l00695"></a><span class="lineno">  695</span>        mesh = std::make_unique&lt;mfem::Mesh&gt;(</div>
-<div class="line"><a id="l00696" name="l00696"></a><span class="lineno">  696</span>            mfem::Mesh::MakeCartesian2D(ex, ey, mfem::Element::QUADRILATERAL, generate_edges, sx, sy, sfc_ordering)</div>
-<div class="line"><a id="l00697" name="l00697"></a><span class="lineno">  697</span>        );</div>
-<div class="line"><a id="l00698" name="l00698"></a><span class="lineno">  698</span>    } <span class="keywordflow">else</span> {</div>
-<div class="line"><a id="l00699" name="l00699"></a><span class="lineno">  699</span>        mesh = std::make_unique&lt;mfem::Mesh&gt;(</div>
-<div class="line"><a id="l00700" name="l00700"></a><span class="lineno">  700</span>            mfem::Mesh::MakeCartesian3D(ex, ey, ez, mfem::Element::HEXAHEDRON, sx, sy, sz, sfc_ordering)</div>
-<div class="line"><a id="l00701" name="l00701"></a><span class="lineno">  701</span>        );</div>
-<div class="line"><a id="l00702" name="l00702"></a><span class="lineno">  702</span>    }</div>
-<div class="line"><a id="l00703" name="l00703"></a><span class="lineno">  703</span> </div>
-<div class="line"><a id="l00704" name="l00704"></a><span class="lineno">  704</span>    <span class="comment">// if (nz == 1) {</span></div>
-<div class="line"><a id="l00705" name="l00705"></a><span class="lineno">  705</span>    <span class="comment">//     mesh = std::make_unique&lt;mfem::Mesh&gt;(</span></div>
-<div class="line"><a id="l00706" name="l00706"></a><span class="lineno">  706</span>    <span class="comment">//         mfem::Mesh::MakeCartesian2D(nx - 1, ny - 1, mfem::Element::QUADRILATERAL, generate_edges, sx, sy, sfc_ordering)</span></div>
-<div class="line"><a id="l00707" name="l00707"></a><span class="lineno">  707</span>    <span class="comment">//     );</span></div>
-<div class="line"><a id="l00708" name="l00708"></a><span class="lineno">  708</span>    <span class="comment">// } else {</span></div>
-<div class="line"><a id="l00709" name="l00709"></a><span class="lineno">  709</span>    <span class="comment">//     mesh = std::make_unique&lt;mfem::Mesh&gt;(</span></div>
-<div class="line"><a id="l00710" name="l00710"></a><span class="lineno">  710</span>    <span class="comment">//         mfem::Mesh::MakeCartesian3D(nx - 1, ny - 1, nz - 1, mfem::Element::HEXAHEDRON, sx, sy, sz, sfc_ordering)</span></div>
-<div class="line"><a id="l00711" name="l00711"></a><span class="lineno">  711</span>    <span class="comment">//     );</span></div>
-<div class="line"><a id="l00712" name="l00712"></a><span class="lineno">  712</span>    <span class="comment">// }</span></div>
-<div class="line"><a id="l00713" name="l00713"></a><span class="lineno">  713</span> </div>
-<div class="line"><a id="l00714" name="l00714"></a><span class="lineno">  714</span>    <span class="keywordflow">return</span> mesh;</div>
-<div class="line"><a id="l00715" name="l00715"></a><span class="lineno">  715</span> </div>
-<div class="line"><a id="l00716" name="l00716"></a><span class="lineno">  716</span>}</div>
-<div class="line"><a id="l00717" name="l00717"></a><span class="lineno">  717</span> </div>
-<div class="line"><a id="l00718" name="l00718"></a><span class="lineno"><a class="line" href="classInitialize__Geometry.html#af6be6115da2201ececfda40cb1ee7796">  718</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classInitialize__Geometry.html#af6be6115da2201ececfda40cb1ee7796">Initialize_Geometry::PrintMeshInfo</a>() {</div>
-<div class="line"><a id="l00719" name="l00719"></a><span class="lineno">  719</span>    </div>
-<div class="line"><a id="l00720" name="l00720"></a><span class="lineno">  720</span>    <span class="keywordflow">if</span> (!<a class="code hl_variable" href="classInitialize__Geometry.html#ac335021b2788680688969e410abd6ca8">parallelMesh</a>) {</div>
-<div class="line"><a id="l00721" name="l00721"></a><span class="lineno">  721</span>        std::cout &lt;&lt; <span class="stringliteral">&quot;Parallel mesh not initialized.\n&quot;</span>;</div>
-<div class="line"><a id="l00722" name="l00722"></a><span class="lineno">  722</span>        <span class="keywordflow">return</span>;</div>
-<div class="line"><a id="l00723" name="l00723"></a><span class="lineno">  723</span>    }</div>
-<div class="line"><a id="l00724" name="l00724"></a><span class="lineno">  724</span> </div>
-<div class="line"><a id="l00725" name="l00725"></a><span class="lineno">  725</span>}</div>
-<div class="line"><a id="l00726" name="l00726"></a><span class="lineno">  726</span> </div>
-<div class="line"><a id="l00727" name="l00727"></a><span class="lineno">  727</span><span class="comment">// void Initialize_Geometry::SaveTiffDataToPGM(const std::vector&lt;std::vector&lt;std::vector&lt;int&gt;&gt;&gt; &amp;data,</span></div>
-<div class="line"><a id="l00728" name="l00728"></a><span class="lineno">  728</span><span class="comment">//                               const std::string &amp;filename)</span></div>
-<div class="line"><a id="l00729" name="l00729"></a><span class="lineno">  729</span><span class="comment">// {</span></div>
-<div class="line"><a id="l00730" name="l00730"></a><span class="lineno">  730</span><span class="comment">//     if (data.empty() || data[0].empty() || data[0][0].empty()) {</span></div>
-<div class="line"><a id="l00731" name="l00731"></a><span class="lineno">  731</span><span class="comment">//         std::cerr &lt;&lt; &quot;SaveTiffDataToPGM: empty data\n&quot;;</span></div>
-<div class="line"><a id="l00732" name="l00732"></a><span class="lineno">  732</span><span class="comment">//         return;</span></div>
-<div class="line"><a id="l00733" name="l00733"></a><span class="lineno">  733</span><span class="comment">//     }</span></div>
-<div class="line"><a id="l00734" name="l00734"></a><span class="lineno">  734</span> </div>
-<div class="line"><a id="l00735" name="l00735"></a><span class="lineno">  735</span><span class="comment">//     const auto &amp;img = data[0];              // first slice only</span></div>
-<div class="line"><a id="l00736" name="l00736"></a><span class="lineno">  736</span><span class="comment">//     const int height = (int)img.size();     // rows</span></div>
-<div class="line"><a id="l00737" name="l00737"></a><span class="lineno">  737</span><span class="comment">//     const int width  = (int)img[0].size();  // columns</span></div>
-<div class="line"><a id="l00738" name="l00738"></a><span class="lineno">  738</span> </div>
-<div class="line"><a id="l00739" name="l00739"></a><span class="lineno">  739</span><span class="comment">//     std::ofstream out(filename, std::ios::binary);</span></div>
-<div class="line"><a id="l00740" name="l00740"></a><span class="lineno">  740</span><span class="comment">//     if (!out.is_open()) {</span></div>
-<div class="line"><a id="l00741" name="l00741"></a><span class="lineno">  741</span><span class="comment">//         std::cerr &lt;&lt; &quot;Could not open file for writing: &quot; &lt;&lt; filename &lt;&lt; &quot;\n&quot;;</span></div>
-<div class="line"><a id="l00742" name="l00742"></a><span class="lineno">  742</span><span class="comment">//         return;</span></div>
+<div class="line"><a id="l00689" name="l00689"></a><span class="lineno">  689</span>    <span class="comment">// if (nz == 1) {</span></div>
+<div class="line"><a id="l00690" name="l00690"></a><span class="lineno">  690</span>    <span class="comment">//     mesh = std::make_unique&lt;mfem::Mesh&gt;(</span></div>
+<div class="line"><a id="l00691" name="l00691"></a><span class="lineno">  691</span>    <span class="comment">//         mfem::Mesh::MakeCartesian2D(nx - 1, ny - 1, mfem::Element::QUADRILATERAL, generate_edges, sx, sy, sfc_ordering)</span></div>
+<div class="line"><a id="l00692" name="l00692"></a><span class="lineno">  692</span>    <span class="comment">//     );</span></div>
+<div class="line"><a id="l00693" name="l00693"></a><span class="lineno">  693</span>    <span class="comment">// } else {</span></div>
+<div class="line"><a id="l00694" name="l00694"></a><span class="lineno">  694</span>    <span class="comment">//     mesh = std::make_unique&lt;mfem::Mesh&gt;(</span></div>
+<div class="line"><a id="l00695" name="l00695"></a><span class="lineno">  695</span>    <span class="comment">//         mfem::Mesh::MakeCartesian3D(nx - 1, ny - 1, nz - 1, mfem::Element::HEXAHEDRON, sx, sy, sz, sfc_ordering)</span></div>
+<div class="line"><a id="l00696" name="l00696"></a><span class="lineno">  696</span>    <span class="comment">//     );</span></div>
+<div class="line"><a id="l00697" name="l00697"></a><span class="lineno">  697</span>    <span class="comment">// }</span></div>
+<div class="line"><a id="l00698" name="l00698"></a><span class="lineno">  698</span> </div>
+<div class="line"><a id="l00699" name="l00699"></a><span class="lineno">  699</span>    <span class="keywordflow">return</span> mesh;</div>
+<div class="line"><a id="l00700" name="l00700"></a><span class="lineno">  700</span> </div>
+<div class="line"><a id="l00701" name="l00701"></a><span class="lineno">  701</span>}</div>
+<div class="line"><a id="l00702" name="l00702"></a><span class="lineno">  702</span> </div>
+<div class="line"><a id="l00703" name="l00703"></a><span class="lineno"><a class="line" href="classInitialize__Geometry.html#af6be6115da2201ececfda40cb1ee7796">  703</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classInitialize__Geometry.html#af6be6115da2201ececfda40cb1ee7796">Initialize_Geometry::PrintMeshInfo</a>() {</div>
+<div class="line"><a id="l00704" name="l00704"></a><span class="lineno">  704</span>    </div>
+<div class="line"><a id="l00705" name="l00705"></a><span class="lineno">  705</span>    <span class="keywordflow">if</span> (!<a class="code hl_variable" href="classInitialize__Geometry.html#ac335021b2788680688969e410abd6ca8">parallelMesh</a>) {</div>
+<div class="line"><a id="l00706" name="l00706"></a><span class="lineno">  706</span>        std::cout &lt;&lt; <span class="stringliteral">&quot;Parallel mesh not initialized.\n&quot;</span>;</div>
+<div class="line"><a id="l00707" name="l00707"></a><span class="lineno">  707</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00708" name="l00708"></a><span class="lineno">  708</span>    }</div>
+<div class="line"><a id="l00709" name="l00709"></a><span class="lineno">  709</span> </div>
+<div class="line"><a id="l00710" name="l00710"></a><span class="lineno">  710</span>}</div>
+<div class="line"><a id="l00711" name="l00711"></a><span class="lineno">  711</span> </div>
+<div class="line"><a id="l00712" name="l00712"></a><span class="lineno">  712</span><span class="comment">// void Initialize_Geometry::SaveTiffDataToPGM(const std::vector&lt;std::vector&lt;std::vector&lt;int&gt;&gt;&gt; &amp;data,</span></div>
+<div class="line"><a id="l00713" name="l00713"></a><span class="lineno">  713</span><span class="comment">//                               const std::string &amp;filename)</span></div>
+<div class="line"><a id="l00714" name="l00714"></a><span class="lineno">  714</span><span class="comment">// {</span></div>
+<div class="line"><a id="l00715" name="l00715"></a><span class="lineno">  715</span><span class="comment">//     if (data.empty() || data[0].empty() || data[0][0].empty()) {</span></div>
+<div class="line"><a id="l00716" name="l00716"></a><span class="lineno">  716</span><span class="comment">//         std::cerr &lt;&lt; &quot;SaveTiffDataToPGM: empty data\n&quot;;</span></div>
+<div class="line"><a id="l00717" name="l00717"></a><span class="lineno">  717</span><span class="comment">//         return;</span></div>
+<div class="line"><a id="l00718" name="l00718"></a><span class="lineno">  718</span><span class="comment">//     }</span></div>
+<div class="line"><a id="l00719" name="l00719"></a><span class="lineno">  719</span> </div>
+<div class="line"><a id="l00720" name="l00720"></a><span class="lineno">  720</span><span class="comment">//     const auto &amp;img = data[0];              // first slice only</span></div>
+<div class="line"><a id="l00721" name="l00721"></a><span class="lineno">  721</span><span class="comment">//     const int height = (int)img.size();     // rows</span></div>
+<div class="line"><a id="l00722" name="l00722"></a><span class="lineno">  722</span><span class="comment">//     const int width  = (int)img[0].size();  // columns</span></div>
+<div class="line"><a id="l00723" name="l00723"></a><span class="lineno">  723</span> </div>
+<div class="line"><a id="l00724" name="l00724"></a><span class="lineno">  724</span><span class="comment">//     std::ofstream out(filename, std::ios::binary);</span></div>
+<div class="line"><a id="l00725" name="l00725"></a><span class="lineno">  725</span><span class="comment">//     if (!out.is_open()) {</span></div>
+<div class="line"><a id="l00726" name="l00726"></a><span class="lineno">  726</span><span class="comment">//         std::cerr &lt;&lt; &quot;Could not open file for writing: &quot; &lt;&lt; filename &lt;&lt; &quot;\n&quot;;</span></div>
+<div class="line"><a id="l00727" name="l00727"></a><span class="lineno">  727</span><span class="comment">//         return;</span></div>
+<div class="line"><a id="l00728" name="l00728"></a><span class="lineno">  728</span><span class="comment">//     }</span></div>
+<div class="line"><a id="l00729" name="l00729"></a><span class="lineno">  729</span> </div>
+<div class="line"><a id="l00730" name="l00730"></a><span class="lineno">  730</span><span class="comment">//     // PGM header</span></div>
+<div class="line"><a id="l00731" name="l00731"></a><span class="lineno">  731</span><span class="comment">//     out &lt;&lt; &quot;P5\n&quot; &lt;&lt; width &lt;&lt; &quot; &quot; &lt;&lt; height &lt;&lt; &quot;\n255\n&quot;;</span></div>
+<div class="line"><a id="l00732" name="l00732"></a><span class="lineno">  732</span> </div>
+<div class="line"><a id="l00733" name="l00733"></a><span class="lineno">  733</span><span class="comment">//     // Write binary 0 or 255 only</span></div>
+<div class="line"><a id="l00734" name="l00734"></a><span class="lineno">  734</span><span class="comment">//     for (int j = 0; j &lt; height; ++j) {</span></div>
+<div class="line"><a id="l00735" name="l00735"></a><span class="lineno">  735</span><span class="comment">//         for (int i = 0; i &lt; width; ++i) {</span></div>
+<div class="line"><a id="l00736" name="l00736"></a><span class="lineno">  736</span><span class="comment">//             unsigned char val;</span></div>
+<div class="line"><a id="l00737" name="l00737"></a><span class="lineno">  737</span> </div>
+<div class="line"><a id="l00738" name="l00738"></a><span class="lineno">  738</span><span class="comment">//             if (img[j][i] &lt;= 0)       val = 0;     // black</span></div>
+<div class="line"><a id="l00739" name="l00739"></a><span class="lineno">  739</span><span class="comment">//             else                      val = 255;   // white</span></div>
+<div class="line"><a id="l00740" name="l00740"></a><span class="lineno">  740</span> </div>
+<div class="line"><a id="l00741" name="l00741"></a><span class="lineno">  741</span><span class="comment">//             out.write(reinterpret_cast&lt;char*&gt;(&amp;val), 1);</span></div>
+<div class="line"><a id="l00742" name="l00742"></a><span class="lineno">  742</span><span class="comment">//         }</span></div>
 <div class="line"><a id="l00743" name="l00743"></a><span class="lineno">  743</span><span class="comment">//     }</span></div>
 <div class="line"><a id="l00744" name="l00744"></a><span class="lineno">  744</span> </div>
-<div class="line"><a id="l00745" name="l00745"></a><span class="lineno">  745</span><span class="comment">//     // PGM header</span></div>
-<div class="line"><a id="l00746" name="l00746"></a><span class="lineno">  746</span><span class="comment">//     out &lt;&lt; &quot;P5\n&quot; &lt;&lt; width &lt;&lt; &quot; &quot; &lt;&lt; height &lt;&lt; &quot;\n255\n&quot;;</span></div>
-<div class="line"><a id="l00747" name="l00747"></a><span class="lineno">  747</span> </div>
-<div class="line"><a id="l00748" name="l00748"></a><span class="lineno">  748</span><span class="comment">//     // Write binary 0 or 255 only</span></div>
-<div class="line"><a id="l00749" name="l00749"></a><span class="lineno">  749</span><span class="comment">//     for (int j = 0; j &lt; height; ++j) {</span></div>
-<div class="line"><a id="l00750" name="l00750"></a><span class="lineno">  750</span><span class="comment">//         for (int i = 0; i &lt; width; ++i) {</span></div>
-<div class="line"><a id="l00751" name="l00751"></a><span class="lineno">  751</span><span class="comment">//             unsigned char val;</span></div>
-<div class="line"><a id="l00752" name="l00752"></a><span class="lineno">  752</span> </div>
-<div class="line"><a id="l00753" name="l00753"></a><span class="lineno">  753</span><span class="comment">//             if (img[j][i] &lt;= 0)       val = 0;     // black</span></div>
-<div class="line"><a id="l00754" name="l00754"></a><span class="lineno">  754</span><span class="comment">//             else                      val = 255;   // white</span></div>
-<div class="line"><a id="l00755" name="l00755"></a><span class="lineno">  755</span> </div>
-<div class="line"><a id="l00756" name="l00756"></a><span class="lineno">  756</span><span class="comment">//             out.write(reinterpret_cast&lt;char*&gt;(&amp;val), 1);</span></div>
-<div class="line"><a id="l00757" name="l00757"></a><span class="lineno">  757</span><span class="comment">//         }</span></div>
-<div class="line"><a id="l00758" name="l00758"></a><span class="lineno">  758</span><span class="comment">//     }</span></div>
-<div class="line"><a id="l00759" name="l00759"></a><span class="lineno">  759</span> </div>
-<div class="line"><a id="l00760" name="l00760"></a><span class="lineno">  760</span><span class="comment">//     out.close();</span></div>
-<div class="line"><a id="l00761" name="l00761"></a><span class="lineno">  761</span><span class="comment">//     if (mfem::Mpi::WorldRank() == 0) {std::cout &lt;&lt; &quot;Saved binary PGM (0/255) to &quot; &lt;&lt; filename &lt;&lt; &quot;\n&quot;;}</span></div>
-<div class="line"><a id="l00762" name="l00762"></a><span class="lineno">  762</span><span class="comment">// }</span></div>
-<div class="line"><a id="l00763" name="l00763"></a><span class="lineno">  763</span> </div>
-<div class="line"><a id="l00764" name="l00764"></a><span class="lineno"><a class="line" href="classInitialize__Geometry.html#a76eec0a2d9e1667ea3d0cfb6320fff9f">  764</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classInitialize__Geometry.html#a76eec0a2d9e1667ea3d0cfb6320fff9f">Initialize_Geometry::SaveTiffDataToPGM</a>(</div>
-<div class="line"><a id="l00765" name="l00765"></a><span class="lineno">  765</span>    <span class="keyword">const</span> std::vector&lt;std::vector&lt;std::vector&lt;int&gt;&gt;&gt; &amp;data,</div>
-<div class="line"><a id="l00766" name="l00766"></a><span class="lineno">  766</span>    <span class="keyword">const</span> std::string &amp;filename)</div>
-<div class="line"><a id="l00767" name="l00767"></a><span class="lineno">  767</span>{</div>
-<div class="line"><a id="l00768" name="l00768"></a><span class="lineno">  768</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classInitialize__Geometry.html#a70201066308233aa81c5f37e08afd23e">data</a>.empty() || <a class="code hl_variable" href="classInitialize__Geometry.html#a70201066308233aa81c5f37e08afd23e">data</a>[0].empty() || <a class="code hl_variable" href="classInitialize__Geometry.html#a70201066308233aa81c5f37e08afd23e">data</a>[0][0].empty()) {</div>
-<div class="line"><a id="l00769" name="l00769"></a><span class="lineno">  769</span>        std::cerr &lt;&lt; <span class="stringliteral">&quot;SaveTiffDataToPGM: empty data\n&quot;</span>;</div>
-<div class="line"><a id="l00770" name="l00770"></a><span class="lineno">  770</span>        <span class="keywordflow">return</span>;</div>
-<div class="line"><a id="l00771" name="l00771"></a><span class="lineno">  771</span>    }</div>
-<div class="line"><a id="l00772" name="l00772"></a><span class="lineno">  772</span> </div>
-<div class="line"><a id="l00773" name="l00773"></a><span class="lineno">  773</span>    <span class="keyword">const</span> <span class="keyword">auto</span> &amp;img = <a class="code hl_variable" href="classInitialize__Geometry.html#a70201066308233aa81c5f37e08afd23e">data</a>[0];</div>
-<div class="line"><a id="l00774" name="l00774"></a><span class="lineno">  774</span>    <span class="keyword">const</span> <span class="keywordtype">int</span> height = <span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(img.size());</div>
-<div class="line"><a id="l00775" name="l00775"></a><span class="lineno">  775</span>    <span class="keyword">const</span> <span class="keywordtype">int</span> width  = <span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(img[0].size());</div>
+<div class="line"><a id="l00745" name="l00745"></a><span class="lineno">  745</span><span class="comment">//     out.close();</span></div>
+<div class="line"><a id="l00746" name="l00746"></a><span class="lineno">  746</span><span class="comment">//     if (mfem::Mpi::WorldRank() == 0) {std::cout &lt;&lt; &quot;Saved binary PGM (0/255) to &quot; &lt;&lt; filename &lt;&lt; &quot;\n&quot;;}</span></div>
+<div class="line"><a id="l00747" name="l00747"></a><span class="lineno">  747</span><span class="comment">// }</span></div>
+<div class="line"><a id="l00748" name="l00748"></a><span class="lineno">  748</span> </div>
+<div class="line"><a id="l00749" name="l00749"></a><span class="lineno"><a class="line" href="classInitialize__Geometry.html#a76eec0a2d9e1667ea3d0cfb6320fff9f">  749</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classInitialize__Geometry.html#a76eec0a2d9e1667ea3d0cfb6320fff9f">Initialize_Geometry::SaveTiffDataToPGM</a>(</div>
+<div class="line"><a id="l00750" name="l00750"></a><span class="lineno">  750</span>    <span class="keyword">const</span> std::vector&lt;std::vector&lt;std::vector&lt;int&gt;&gt;&gt; &amp;data,</div>
+<div class="line"><a id="l00751" name="l00751"></a><span class="lineno">  751</span>    <span class="keyword">const</span> std::string &amp;filename)</div>
+<div class="line"><a id="l00752" name="l00752"></a><span class="lineno">  752</span>{</div>
+<div class="line"><a id="l00753" name="l00753"></a><span class="lineno">  753</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classInitialize__Geometry.html#a70201066308233aa81c5f37e08afd23e">data</a>.empty() || <a class="code hl_variable" href="classInitialize__Geometry.html#a70201066308233aa81c5f37e08afd23e">data</a>[0].empty() || <a class="code hl_variable" href="classInitialize__Geometry.html#a70201066308233aa81c5f37e08afd23e">data</a>[0][0].empty()) {</div>
+<div class="line"><a id="l00754" name="l00754"></a><span class="lineno">  754</span>        std::cerr &lt;&lt; <span class="stringliteral">&quot;SaveTiffDataToPGM: empty data\n&quot;</span>;</div>
+<div class="line"><a id="l00755" name="l00755"></a><span class="lineno">  755</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00756" name="l00756"></a><span class="lineno">  756</span>    }</div>
+<div class="line"><a id="l00757" name="l00757"></a><span class="lineno">  757</span> </div>
+<div class="line"><a id="l00758" name="l00758"></a><span class="lineno">  758</span>    <span class="keyword">const</span> <span class="keyword">auto</span> &amp;img = <a class="code hl_variable" href="classInitialize__Geometry.html#a70201066308233aa81c5f37e08afd23e">data</a>[0];</div>
+<div class="line"><a id="l00759" name="l00759"></a><span class="lineno">  759</span>    <span class="keyword">const</span> <span class="keywordtype">int</span> height = <span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(img.size());</div>
+<div class="line"><a id="l00760" name="l00760"></a><span class="lineno">  760</span>    <span class="keyword">const</span> <span class="keywordtype">int</span> width  = <span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(img[0].size());</div>
+<div class="line"><a id="l00761" name="l00761"></a><span class="lineno">  761</span> </div>
+<div class="line"><a id="l00762" name="l00762"></a><span class="lineno">  762</span>    <span class="keywordtype">int</span> max_label = 0;</div>
+<div class="line"><a id="l00763" name="l00763"></a><span class="lineno">  763</span>    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;row : img) {</div>
+<div class="line"><a id="l00764" name="l00764"></a><span class="lineno">  764</span>        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> label : row) {</div>
+<div class="line"><a id="l00765" name="l00765"></a><span class="lineno">  765</span>            max_label = std::max(max_label, label);</div>
+<div class="line"><a id="l00766" name="l00766"></a><span class="lineno">  766</span>        }</div>
+<div class="line"><a id="l00767" name="l00767"></a><span class="lineno">  767</span>    }</div>
+<div class="line"><a id="l00768" name="l00768"></a><span class="lineno">  768</span> </div>
+<div class="line"><a id="l00769" name="l00769"></a><span class="lineno">  769</span>    std::ofstream out(filename, std::ios::binary);</div>
+<div class="line"><a id="l00770" name="l00770"></a><span class="lineno">  770</span>    <span class="keywordflow">if</span> (!out.is_open()) {</div>
+<div class="line"><a id="l00771" name="l00771"></a><span class="lineno">  771</span>        std::cerr &lt;&lt; <span class="stringliteral">&quot;Could not open file for writing: &quot;</span> &lt;&lt; filename &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;</div>
+<div class="line"><a id="l00772" name="l00772"></a><span class="lineno">  772</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00773" name="l00773"></a><span class="lineno">  773</span>    }</div>
+<div class="line"><a id="l00774" name="l00774"></a><span class="lineno">  774</span> </div>
+<div class="line"><a id="l00775" name="l00775"></a><span class="lineno">  775</span>    out &lt;&lt; <span class="stringliteral">&quot;P5\n&quot;</span> &lt;&lt; width &lt;&lt; <span class="stringliteral">&quot; &quot;</span> &lt;&lt; height &lt;&lt; <span class="stringliteral">&quot;\n255\n&quot;</span>;</div>
 <div class="line"><a id="l00776" name="l00776"></a><span class="lineno">  776</span> </div>
-<div class="line"><a id="l00777" name="l00777"></a><span class="lineno">  777</span>    <span class="keywordtype">int</span> max_label = 0;</div>
-<div class="line"><a id="l00778" name="l00778"></a><span class="lineno">  778</span>    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;row : img) {</div>
-<div class="line"><a id="l00779" name="l00779"></a><span class="lineno">  779</span>        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> label : row) {</div>
-<div class="line"><a id="l00780" name="l00780"></a><span class="lineno">  780</span>            max_label = std::max(max_label, label);</div>
-<div class="line"><a id="l00781" name="l00781"></a><span class="lineno">  781</span>        }</div>
-<div class="line"><a id="l00782" name="l00782"></a><span class="lineno">  782</span>    }</div>
-<div class="line"><a id="l00783" name="l00783"></a><span class="lineno">  783</span> </div>
-<div class="line"><a id="l00784" name="l00784"></a><span class="lineno">  784</span>    std::ofstream out(filename, std::ios::binary);</div>
-<div class="line"><a id="l00785" name="l00785"></a><span class="lineno">  785</span>    <span class="keywordflow">if</span> (!out.is_open()) {</div>
-<div class="line"><a id="l00786" name="l00786"></a><span class="lineno">  786</span>        std::cerr &lt;&lt; <span class="stringliteral">&quot;Could not open file for writing: &quot;</span> &lt;&lt; filename &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;</div>
-<div class="line"><a id="l00787" name="l00787"></a><span class="lineno">  787</span>        <span class="keywordflow">return</span>;</div>
-<div class="line"><a id="l00788" name="l00788"></a><span class="lineno">  788</span>    }</div>
-<div class="line"><a id="l00789" name="l00789"></a><span class="lineno">  789</span> </div>
-<div class="line"><a id="l00790" name="l00790"></a><span class="lineno">  790</span>    out &lt;&lt; <span class="stringliteral">&quot;P5\n&quot;</span> &lt;&lt; width &lt;&lt; <span class="stringliteral">&quot; &quot;</span> &lt;&lt; height &lt;&lt; <span class="stringliteral">&quot;\n255\n&quot;</span>;</div>
+<div class="line"><a id="l00777" name="l00777"></a><span class="lineno">  777</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> j = 0; j &lt; height; ++j) {</div>
+<div class="line"><a id="l00778" name="l00778"></a><span class="lineno">  778</span>        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; width; ++i) {</div>
+<div class="line"><a id="l00779" name="l00779"></a><span class="lineno">  779</span>            <span class="keyword">const</span> <span class="keywordtype">int</span> label = img[j][i];</div>
+<div class="line"><a id="l00780" name="l00780"></a><span class="lineno">  780</span> </div>
+<div class="line"><a id="l00781" name="l00781"></a><span class="lineno">  781</span>            <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> val = 0;</div>
+<div class="line"><a id="l00782" name="l00782"></a><span class="lineno">  782</span>            <span class="keywordflow">if</span> (max_label &gt; 0) {</div>
+<div class="line"><a id="l00783" name="l00783"></a><span class="lineno">  783</span>                val = <span class="keyword">static_cast&lt;</span><span class="keywordtype">unsigned</span> <span class="keywordtype">char</span><span class="keyword">&gt;</span>(</div>
+<div class="line"><a id="l00784" name="l00784"></a><span class="lineno">  784</span>                    std::round(255.0 * label / max_label)</div>
+<div class="line"><a id="l00785" name="l00785"></a><span class="lineno">  785</span>                );</div>
+<div class="line"><a id="l00786" name="l00786"></a><span class="lineno">  786</span>            }</div>
+<div class="line"><a id="l00787" name="l00787"></a><span class="lineno">  787</span> </div>
+<div class="line"><a id="l00788" name="l00788"></a><span class="lineno">  788</span>            out.write(<span class="keyword">reinterpret_cast&lt;</span><span class="keywordtype">char</span>*<span class="keyword">&gt;</span>(&amp;val), 1);</div>
+<div class="line"><a id="l00789" name="l00789"></a><span class="lineno">  789</span>        }</div>
+<div class="line"><a id="l00790" name="l00790"></a><span class="lineno">  790</span>    }</div>
 <div class="line"><a id="l00791" name="l00791"></a><span class="lineno">  791</span> </div>
-<div class="line"><a id="l00792" name="l00792"></a><span class="lineno">  792</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> j = 0; j &lt; height; ++j) {</div>
-<div class="line"><a id="l00793" name="l00793"></a><span class="lineno">  793</span>        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; width; ++i) {</div>
-<div class="line"><a id="l00794" name="l00794"></a><span class="lineno">  794</span>            <span class="keyword">const</span> <span class="keywordtype">int</span> label = img[j][i];</div>
-<div class="line"><a id="l00795" name="l00795"></a><span class="lineno">  795</span> </div>
-<div class="line"><a id="l00796" name="l00796"></a><span class="lineno">  796</span>            <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> val = 0;</div>
-<div class="line"><a id="l00797" name="l00797"></a><span class="lineno">  797</span>            <span class="keywordflow">if</span> (max_label &gt; 0) {</div>
-<div class="line"><a id="l00798" name="l00798"></a><span class="lineno">  798</span>                val = <span class="keyword">static_cast&lt;</span><span class="keywordtype">unsigned</span> <span class="keywordtype">char</span><span class="keyword">&gt;</span>(</div>
-<div class="line"><a id="l00799" name="l00799"></a><span class="lineno">  799</span>                    std::round(255.0 * label / max_label)</div>
-<div class="line"><a id="l00800" name="l00800"></a><span class="lineno">  800</span>                );</div>
-<div class="line"><a id="l00801" name="l00801"></a><span class="lineno">  801</span>            }</div>
+<div class="line"><a id="l00792" name="l00792"></a><span class="lineno">  792</span>    out.close();</div>
+<div class="line"><a id="l00793" name="l00793"></a><span class="lineno">  793</span> </div>
+<div class="line"><a id="l00794" name="l00794"></a><span class="lineno">  794</span>    <span class="keywordflow">if</span> (mfem::Mpi::WorldRank() == 0) {</div>
+<div class="line"><a id="l00795" name="l00795"></a><span class="lineno">  795</span>        std::cout &lt;&lt; <span class="stringliteral">&quot;Saved PGM to &quot;</span> &lt;&lt; filename</div>
+<div class="line"><a id="l00796" name="l00796"></a><span class="lineno">  796</span>                  &lt;&lt; <span class="stringliteral">&quot; using labels 0-&quot;</span> &lt;&lt; max_label &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;</div>
+<div class="line"><a id="l00797" name="l00797"></a><span class="lineno">  797</span>    }</div>
+<div class="line"><a id="l00798" name="l00798"></a><span class="lineno">  798</span>}</div>
+<div class="line"><a id="l00799" name="l00799"></a><span class="lineno">  799</span> </div>
+<div class="line"><a id="l00800" name="l00800"></a><span class="lineno">  800</span> </div>
+<div class="line"><a id="l00801" name="l00801"></a><span class="lineno"><a class="line" href="classInitialize__Geometry.html#ad9bd0196a8d84cd6e67a1014bed359fa">  801</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classInitialize__Geometry.html#ad9bd0196a8d84cd6e67a1014bed359fa">Initialize_Geometry::ComputePDEFilter</a>(mfem::ParGridFunction &amp;dist, mfem::ParGridFunction &amp;filt_gf, <span class="keywordtype">int</span> mode)</div>
 <div class="line"><a id="l00802" name="l00802"></a><span class="lineno">  802</span> </div>
-<div class="line"><a id="l00803" name="l00803"></a><span class="lineno">  803</span>            out.write(<span class="keyword">reinterpret_cast&lt;</span><span class="keywordtype">char</span>*<span class="keyword">&gt;</span>(&amp;val), 1);</div>
-<div class="line"><a id="l00804" name="l00804"></a><span class="lineno">  804</span>        }</div>
-<div class="line"><a id="l00805" name="l00805"></a><span class="lineno">  805</span>    }</div>
-<div class="line"><a id="l00806" name="l00806"></a><span class="lineno">  806</span> </div>
-<div class="line"><a id="l00807" name="l00807"></a><span class="lineno">  807</span>    out.close();</div>
-<div class="line"><a id="l00808" name="l00808"></a><span class="lineno">  808</span> </div>
-<div class="line"><a id="l00809" name="l00809"></a><span class="lineno">  809</span>    <span class="keywordflow">if</span> (mfem::Mpi::WorldRank() == 0) {</div>
-<div class="line"><a id="l00810" name="l00810"></a><span class="lineno">  810</span>        std::cout &lt;&lt; <span class="stringliteral">&quot;Saved PGM to &quot;</span> &lt;&lt; filename</div>
-<div class="line"><a id="l00811" name="l00811"></a><span class="lineno">  811</span>                  &lt;&lt; <span class="stringliteral">&quot; using labels 0-&quot;</span> &lt;&lt; max_label &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;</div>
-<div class="line"><a id="l00812" name="l00812"></a><span class="lineno">  812</span>    }</div>
-<div class="line"><a id="l00813" name="l00813"></a><span class="lineno">  813</span>}</div>
-<div class="line"><a id="l00814" name="l00814"></a><span class="lineno">  814</span> </div>
-<div class="line"><a id="l00815" name="l00815"></a><span class="lineno">  815</span> </div>
-<div class="line"><a id="l00816" name="l00816"></a><span class="lineno"><a class="line" href="classInitialize__Geometry.html#ad9bd0196a8d84cd6e67a1014bed359fa">  816</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classInitialize__Geometry.html#ad9bd0196a8d84cd6e67a1014bed359fa">Initialize_Geometry::ComputePDEFilter</a>(mfem::ParGridFunction &amp;dist, mfem::ParGridFunction &amp;filt_gf, <span class="keywordtype">int</span> mode)</div>
-<div class="line"><a id="l00817" name="l00817"></a><span class="lineno">  817</span> </div>
-<div class="line"><a id="l00818" name="l00818"></a><span class="lineno">  818</span>{</div>
-<div class="line"><a id="l00819" name="l00819"></a><span class="lineno">  819</span>    MFEM_VERIFY(<a class="code hl_variable" href="classInitialize__Geometry.html#ac335021b2788680688969e410abd6ca8">parallelMesh</a>, <span class="stringliteral">&quot;parallelMesh is not initialized.&quot;</span>);</div>
-<div class="line"><a id="l00820" name="l00820"></a><span class="lineno">  820</span>    MFEM_VERIFY(<a class="code hl_variable" href="classInitialize__Geometry.html#a077e3a87b03b572967278fbaf75cee53">parfespace</a>, <span class="stringliteral">&quot;parfespace is not initialized.&quot;</span>);</div>
-<div class="line"><a id="l00821" name="l00821"></a><span class="lineno">  821</span>    MFEM_VERIFY(<a class="code hl_variable" href="classInitialize__Geometry.html#aa25297c6da9c4510dfc0a9a62cefbaf8">Vox</a>, <span class="stringliteral">&quot;Vox is not initialized (need .tif path + MapGlobalToLocal).&quot;</span>);</div>
-<div class="line"><a id="l00822" name="l00822"></a><span class="lineno">  822</span>    MFEM_VERIFY(dist.ParFESpace() == <a class="code hl_variable" href="classInitialize__Geometry.html#a077e3a87b03b572967278fbaf75cee53">parfespace</a>.get(), <span class="stringliteral">&quot;dist must be on parfespace.&quot;</span>);</div>
-<div class="line"><a id="l00823" name="l00823"></a><span class="lineno">  823</span>    MFEM_VERIFY(filt_gf.ParFESpace() == <a class="code hl_variable" href="classInitialize__Geometry.html#a077e3a87b03b572967278fbaf75cee53">parfespace</a>.get(), <span class="stringliteral">&quot;filt_gf must be on parfespace.&quot;</span>);</div>
-<div class="line"><a id="l00824" name="l00824"></a><span class="lineno">  824</span>    MFEM_VERIFY(<a class="code hl_variable" href="classInitialize__Geometry.html#a7595f17d99d4aac6d6972115300caa16">parfespace_dg</a>, <span class="stringliteral">&quot;parfespace_dg is not initialized.&quot;</span>);</div>
+<div class="line"><a id="l00803" name="l00803"></a><span class="lineno">  803</span>{</div>
+<div class="line"><a id="l00804" name="l00804"></a><span class="lineno">  804</span>    MFEM_VERIFY(<a class="code hl_variable" href="classInitialize__Geometry.html#ac335021b2788680688969e410abd6ca8">parallelMesh</a>, <span class="stringliteral">&quot;parallelMesh is not initialized.&quot;</span>);</div>
+<div class="line"><a id="l00805" name="l00805"></a><span class="lineno">  805</span>    MFEM_VERIFY(<a class="code hl_variable" href="classInitialize__Geometry.html#a077e3a87b03b572967278fbaf75cee53">parfespace</a>, <span class="stringliteral">&quot;parfespace is not initialized.&quot;</span>);</div>
+<div class="line"><a id="l00806" name="l00806"></a><span class="lineno">  806</span>    MFEM_VERIFY(<a class="code hl_variable" href="classInitialize__Geometry.html#aa25297c6da9c4510dfc0a9a62cefbaf8">Vox</a>, <span class="stringliteral">&quot;Vox is not initialized (need .tif path + MapGlobalToLocal).&quot;</span>);</div>
+<div class="line"><a id="l00807" name="l00807"></a><span class="lineno">  807</span>    MFEM_VERIFY(dist.ParFESpace() == <a class="code hl_variable" href="classInitialize__Geometry.html#a077e3a87b03b572967278fbaf75cee53">parfespace</a>.get(), <span class="stringliteral">&quot;dist must be on parfespace.&quot;</span>);</div>
+<div class="line"><a id="l00808" name="l00808"></a><span class="lineno">  808</span>    MFEM_VERIFY(filt_gf.ParFESpace() == <a class="code hl_variable" href="classInitialize__Geometry.html#a077e3a87b03b572967278fbaf75cee53">parfespace</a>.get(), <span class="stringliteral">&quot;filt_gf must be on parfespace.&quot;</span>);</div>
+<div class="line"><a id="l00809" name="l00809"></a><span class="lineno">  809</span>    MFEM_VERIFY(<a class="code hl_variable" href="classInitialize__Geometry.html#a7595f17d99d4aac6d6972115300caa16">parfespace_dg</a>, <span class="stringliteral">&quot;parfespace_dg is not initialized.&quot;</span>);</div>
+<div class="line"><a id="l00810" name="l00810"></a><span class="lineno">  810</span> </div>
+<div class="line"><a id="l00811" name="l00811"></a><span class="lineno">  811</span>    <span class="keywordtype">double</span> dx;</div>
+<div class="line"><a id="l00812" name="l00812"></a><span class="lineno">  812</span>    dx = <a class="code hl_variable" href="classInitialize__Geometry.html#ac335021b2788680688969e410abd6ca8">parallelMesh</a>-&gt;GetElementSize(0); <span class="comment">// assuming uniform mesh</span></div>
+<div class="line"><a id="l00813" name="l00813"></a><span class="lineno">  813</span> </div>
+<div class="line"><a id="l00814" name="l00814"></a><span class="lineno">  814</span>    MFEM_VERIFY(<a class="code hl_variable" href="classInitialize__Geometry.html#ac335021b2788680688969e410abd6ca8">parallelMesh</a>-&gt;Dimension() == 2 || <a class="code hl_variable" href="classInitialize__Geometry.html#ac335021b2788680688969e410abd6ca8">parallelMesh</a>-&gt;Dimension() == 3,</div>
+<div class="line"><a id="l00815" name="l00815"></a><span class="lineno">  815</span>            <span class="stringliteral">&quot;ComputePDEFilter: mesh must be 2D or 3D.&quot;</span>);</div>
+<div class="line"><a id="l00816" name="l00816"></a><span class="lineno">  816</span> </div>
+<div class="line"><a id="l00817" name="l00817"></a><span class="lineno">  817</span>    <span class="comment">// TIFF sizes</span></div>
+<div class="line"><a id="l00818" name="l00818"></a><span class="lineno">  818</span>    <span class="keyword">const</span> <span class="keywordtype">int</span> nz = (int)<a class="code hl_variable" href="classInitialize__Geometry.html#a27aeeb194755111fc32cab304b089a77">tiffData</a>.size();</div>
+<div class="line"><a id="l00819" name="l00819"></a><span class="lineno">  819</span>    <span class="keyword">const</span> <span class="keywordtype">int</span> ny = (int)<a class="code hl_variable" href="classInitialize__Geometry.html#a27aeeb194755111fc32cab304b089a77">tiffData</a>[0].size();</div>
+<div class="line"><a id="l00820" name="l00820"></a><span class="lineno">  820</span>    <span class="keyword">const</span> <span class="keywordtype">int</span> nx = (int)<a class="code hl_variable" href="classInitialize__Geometry.html#a27aeeb194755111fc32cab304b089a77">tiffData</a>[0][0].size();</div>
+<div class="line"><a id="l00821" name="l00821"></a><span class="lineno">  821</span> </div>
+<div class="line"><a id="l00822" name="l00822"></a><span class="lineno">  822</span>    <span class="keyword">const</span> <span class="keywordtype">int</span> rank = mfem::Mpi::WorldRank();</div>
+<div class="line"><a id="l00823" name="l00823"></a><span class="lineno">  823</span>    <span class="keyword">const</span> <span class="keywordtype">bool</span> eight_conn = <span class="keyword">false</span>;        <span class="comment">// 2D: 4/8</span></div>
+<div class="line"><a id="l00824" name="l00824"></a><span class="lineno">  824</span>    <span class="keyword">const</span> <span class="keywordtype">bool</span> twenty_six = <span class="keyword">false</span>;        <span class="comment">// 3D: 6/26  (set true if desired)</span></div>
 <div class="line"><a id="l00825" name="l00825"></a><span class="lineno">  825</span> </div>
-<div class="line"><a id="l00826" name="l00826"></a><span class="lineno">  826</span>    <span class="keywordtype">double</span> dx;</div>
-<div class="line"><a id="l00827" name="l00827"></a><span class="lineno">  827</span>    dx = <a class="code hl_variable" href="classInitialize__Geometry.html#ac335021b2788680688969e410abd6ca8">parallelMesh</a>-&gt;GetElementSize(0); <span class="comment">// assuming uniform mesh</span></div>
+<div class="line"><a id="l00826" name="l00826"></a><span class="lineno">  826</span>    <span class="comment">// IMPORTANT: fg must cover the whole volume for 3D</span></div>
+<div class="line"><a id="l00827" name="l00827"></a><span class="lineno">  827</span>    std::vector&lt;uint8_t&gt; fg(nx*ny*nz, 0);</div>
 <div class="line"><a id="l00828" name="l00828"></a><span class="lineno">  828</span> </div>
-<div class="line"><a id="l00829" name="l00829"></a><span class="lineno">  829</span>    MFEM_VERIFY(<a class="code hl_variable" href="classInitialize__Geometry.html#ac335021b2788680688969e410abd6ca8">parallelMesh</a>-&gt;Dimension() == 2 || <a class="code hl_variable" href="classInitialize__Geometry.html#ac335021b2788680688969e410abd6ca8">parallelMesh</a>-&gt;Dimension() == 3,</div>
-<div class="line"><a id="l00830" name="l00830"></a><span class="lineno">  830</span>            <span class="stringliteral">&quot;ComputePDEFilter: mesh must be 2D or 3D.&quot;</span>);</div>
-<div class="line"><a id="l00831" name="l00831"></a><span class="lineno">  831</span> </div>
-<div class="line"><a id="l00832" name="l00832"></a><span class="lineno">  832</span>    <span class="comment">// TIFF sizes</span></div>
-<div class="line"><a id="l00833" name="l00833"></a><span class="lineno">  833</span>    <span class="keyword">const</span> <span class="keywordtype">int</span> nz = (int)<a class="code hl_variable" href="classInitialize__Geometry.html#a27aeeb194755111fc32cab304b089a77">tiffData</a>.size();</div>
-<div class="line"><a id="l00834" name="l00834"></a><span class="lineno">  834</span>    <span class="keyword">const</span> <span class="keywordtype">int</span> ny = (int)<a class="code hl_variable" href="classInitialize__Geometry.html#a27aeeb194755111fc32cab304b089a77">tiffData</a>[0].size();</div>
-<div class="line"><a id="l00835" name="l00835"></a><span class="lineno">  835</span>    <span class="keyword">const</span> <span class="keywordtype">int</span> nx = (int)<a class="code hl_variable" href="classInitialize__Geometry.html#a27aeeb194755111fc32cab304b089a77">tiffData</a>[0][0].size();</div>
-<div class="line"><a id="l00836" name="l00836"></a><span class="lineno">  836</span> </div>
-<div class="line"><a id="l00837" name="l00837"></a><span class="lineno">  837</span>    <span class="keyword">const</span> <span class="keywordtype">int</span> rank = mfem::Mpi::WorldRank();</div>
-<div class="line"><a id="l00838" name="l00838"></a><span class="lineno">  838</span>    <span class="keyword">const</span> <span class="keywordtype">bool</span> eight_conn = <span class="keyword">false</span>;        <span class="comment">// 2D: 4/8</span></div>
-<div class="line"><a id="l00839" name="l00839"></a><span class="lineno">  839</span>    <span class="keyword">const</span> <span class="keywordtype">bool</span> twenty_six = <span class="keyword">false</span>;        <span class="comment">// 3D: 6/26  (set true if desired)</span></div>
-<div class="line"><a id="l00840" name="l00840"></a><span class="lineno">  840</span> </div>
-<div class="line"><a id="l00841" name="l00841"></a><span class="lineno">  841</span>    <span class="comment">// IMPORTANT: fg must cover the whole volume for 3D</span></div>
-<div class="line"><a id="l00842" name="l00842"></a><span class="lineno">  842</span>    std::vector&lt;uint8_t&gt; fg(nx*ny*nz, 0);</div>
-<div class="line"><a id="l00843" name="l00843"></a><span class="lineno">  843</span> </div>
-<div class="line"><a id="l00844" name="l00844"></a><span class="lineno">  844</span>    <span class="comment">// Boundary Rules: [0] = west, [1] = east, [2] = south, [3] = north, [4] = bottom, [5] = top</span></div>
-<div class="line"><a id="l00845" name="l00845"></a><span class="lineno">  845</span> </div>
-<div class="line"><a id="l00846" name="l00846"></a><span class="lineno">  846</span>    <span class="keywordflow">if</span> (rank == 0)</div>
-<div class="line"><a id="l00847" name="l00847"></a><span class="lineno">  847</span>    {</div>
-<div class="line"><a id="l00848" name="l00848"></a><span class="lineno">  848</span>        <span class="comment">// base solid from TIFF: 1 = white/solid</span></div>
-<div class="line"><a id="l00849" name="l00849"></a><span class="lineno">  849</span>        std::vector&lt;uint8_t&gt; solid_base(nx*ny*nz, 0);</div>
-<div class="line"><a id="l00850" name="l00850"></a><span class="lineno">  850</span>        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> k=0; k&lt;nz; ++k)</div>
-<div class="line"><a id="l00851" name="l00851"></a><span class="lineno">  851</span>        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> j=0; j&lt;ny; ++j)</div>
-<div class="line"><a id="l00852" name="l00852"></a><span class="lineno">  852</span>        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i=0; i&lt;nx; ++i)</div>
-<div class="line"><a id="l00853" name="l00853"></a><span class="lineno">  853</span>        {</div>
-<div class="line"><a id="l00854" name="l00854"></a><span class="lineno">  854</span>            <span class="keyword">const</span> <span class="keywordtype">int</span> idx = i + nx*j + nx*ny*k;</div>
-<div class="line"><a id="l00855" name="l00855"></a><span class="lineno">  855</span>            solid_base[idx] = (<a class="code hl_variable" href="classInitialize__Geometry.html#a27aeeb194755111fc32cab304b089a77">tiffData</a>[k][j][i] &gt; 0) ? 1 : 0;</div>
-<div class="line"><a id="l00856" name="l00856"></a><span class="lineno">  856</span>        }</div>
-<div class="line"><a id="l00857" name="l00857"></a><span class="lineno">  857</span> </div>
-<div class="line"><a id="l00858" name="l00858"></a><span class="lineno">  858</span>        <span class="keywordflow">if</span> (mode == 0)</div>
+<div class="line"><a id="l00829" name="l00829"></a><span class="lineno">  829</span>    <span class="comment">// Boundary Rules: [0] = west, [1] = east, [2] = south, [3] = north, [4] = bottom, [5] = top</span></div>
+<div class="line"><a id="l00830" name="l00830"></a><span class="lineno">  830</span> </div>
+<div class="line"><a id="l00831" name="l00831"></a><span class="lineno">  831</span>    <span class="keywordflow">if</span> (rank == 0)</div>
+<div class="line"><a id="l00832" name="l00832"></a><span class="lineno">  832</span>    {</div>
+<div class="line"><a id="l00833" name="l00833"></a><span class="lineno">  833</span>        <span class="comment">// base solid from TIFF: 1 = white/solid</span></div>
+<div class="line"><a id="l00834" name="l00834"></a><span class="lineno">  834</span>        std::vector&lt;uint8_t&gt; solid_base(nx*ny*nz, 0);</div>
+<div class="line"><a id="l00835" name="l00835"></a><span class="lineno">  835</span>        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> k=0; k&lt;nz; ++k)</div>
+<div class="line"><a id="l00836" name="l00836"></a><span class="lineno">  836</span>        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> j=0; j&lt;ny; ++j)</div>
+<div class="line"><a id="l00837" name="l00837"></a><span class="lineno">  837</span>        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i=0; i&lt;nx; ++i)</div>
+<div class="line"><a id="l00838" name="l00838"></a><span class="lineno">  838</span>        {</div>
+<div class="line"><a id="l00839" name="l00839"></a><span class="lineno">  839</span>            <span class="keyword">const</span> <span class="keywordtype">int</span> idx = i + nx*j + nx*ny*k;</div>
+<div class="line"><a id="l00840" name="l00840"></a><span class="lineno">  840</span>            solid_base[idx] = (<a class="code hl_variable" href="classInitialize__Geometry.html#a27aeeb194755111fc32cab304b089a77">tiffData</a>[k][j][i] &gt; 0) ? 1 : 0;</div>
+<div class="line"><a id="l00841" name="l00841"></a><span class="lineno">  841</span>        }</div>
+<div class="line"><a id="l00842" name="l00842"></a><span class="lineno">  842</span> </div>
+<div class="line"><a id="l00843" name="l00843"></a><span class="lineno">  843</span>        <span class="keywordflow">if</span> (mode == 0)</div>
+<div class="line"><a id="l00844" name="l00844"></a><span class="lineno">  844</span>        {</div>
+<div class="line"><a id="l00845" name="l00845"></a><span class="lineno">  845</span>            <span class="comment">// PSI: solid phase, keep only stuff connected to a boundary</span></div>
+<div class="line"><a id="l00846" name="l00846"></a><span class="lineno">  846</span>            fg = solid_base;</div>
+<div class="line"><a id="l00847" name="l00847"></a><span class="lineno">  847</span> </div>
+<div class="line"><a id="l00848" name="l00848"></a><span class="lineno">  848</span>            <span class="keywordflow">if</span> (nz == 1)</div>
+<div class="line"><a id="l00849" name="l00849"></a><span class="lineno">  849</span>            {</div>
+<div class="line"><a id="l00850" name="l00850"></a><span class="lineno">  850</span>                <a class="code hl_function" href="Initialize__Geometry_8cpp.html#acc203b7a1d300ef69ceae5d20f0aacff">KeepOnlyConnectedToBoundary_2D</a>(fg, nx, ny, eight_conn, <span class="keyword">false</span>, 1); <span class="comment">// psi boundary</span></div>
+<div class="line"><a id="l00851" name="l00851"></a><span class="lineno">  851</span>            }</div>
+<div class="line"><a id="l00852" name="l00852"></a><span class="lineno">  852</span>            <span class="keywordflow">else</span></div>
+<div class="line"><a id="l00853" name="l00853"></a><span class="lineno">  853</span>            {</div>
+<div class="line"><a id="l00854" name="l00854"></a><span class="lineno">  854</span>                <span class="comment">// xmax face in 3D (seed_face=1)</span></div>
+<div class="line"><a id="l00855" name="l00855"></a><span class="lineno">  855</span>                <a class="code hl_function" href="Initialize__Geometry_8cpp.html#a8626305623c25e2692534b76786a433d">KeepOnlyConnectedToBoundary_3D</a>(fg, nx, ny, nz, twenty_six, <span class="keyword">false</span>, 1);</div>
+<div class="line"><a id="l00856" name="l00856"></a><span class="lineno">  856</span>            }</div>
+<div class="line"><a id="l00857" name="l00857"></a><span class="lineno">  857</span>        }</div>
+<div class="line"><a id="l00858" name="l00858"></a><span class="lineno">  858</span>        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (mode == 1)</div>
 <div class="line"><a id="l00859" name="l00859"></a><span class="lineno">  859</span>        {</div>
-<div class="line"><a id="l00860" name="l00860"></a><span class="lineno">  860</span>            <span class="comment">// PSI: solid phase, keep only stuff connected to a boundary</span></div>
-<div class="line"><a id="l00861" name="l00861"></a><span class="lineno">  861</span>            fg = solid_base;</div>
+<div class="line"><a id="l00860" name="l00860"></a><span class="lineno">  860</span>            <span class="comment">// PSE: electrolyte = NOT solid</span></div>
+<div class="line"><a id="l00861" name="l00861"></a><span class="lineno">  861</span>            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> idx=0; idx&lt;nx*ny*nz; ++idx) fg[idx] = solid_base[idx] ? 0 : 1;</div>
 <div class="line"><a id="l00862" name="l00862"></a><span class="lineno">  862</span> </div>
 <div class="line"><a id="l00863" name="l00863"></a><span class="lineno">  863</span>            <span class="keywordflow">if</span> (nz == 1)</div>
 <div class="line"><a id="l00864" name="l00864"></a><span class="lineno">  864</span>            {</div>
-<div class="line"><a id="l00865" name="l00865"></a><span class="lineno">  865</span>                <a class="code hl_function" href="Initialize__Geometry_8cpp.html#acc203b7a1d300ef69ceae5d20f0aacff">KeepOnlyConnectedToBoundary_2D</a>(fg, nx, ny, eight_conn, <span class="keyword">false</span>, 1); <span class="comment">// psi boundary</span></div>
-<div class="line"><a id="l00866" name="l00866"></a><span class="lineno">  866</span>            }</div>
-<div class="line"><a id="l00867" name="l00867"></a><span class="lineno">  867</span>            <span class="keywordflow">else</span></div>
-<div class="line"><a id="l00868" name="l00868"></a><span class="lineno">  868</span>            {</div>
-<div class="line"><a id="l00869" name="l00869"></a><span class="lineno">  869</span>                <span class="comment">// xmax face in 3D (seed_face=1)</span></div>
-<div class="line"><a id="l00870" name="l00870"></a><span class="lineno">  870</span>                <a class="code hl_function" href="Initialize__Geometry_8cpp.html#a8626305623c25e2692534b76786a433d">KeepOnlyConnectedToBoundary_3D</a>(fg, nx, ny, nz, twenty_six, <span class="keyword">false</span>, 1);</div>
+<div class="line"><a id="l00865" name="l00865"></a><span class="lineno">  865</span>                <a class="code hl_function" href="Initialize__Geometry_8cpp.html#acc203b7a1d300ef69ceae5d20f0aacff">KeepOnlyConnectedToBoundary_2D</a>(fg, nx, ny, eight_conn, <span class="keyword">false</span>, 0); <span class="comment">// pse boundary</span></div>
+<div class="line"><a id="l00866" name="l00866"></a><span class="lineno">  866</span>                <span class="comment">// KeepOnlyConnectedToBoundary_2D(fg, nx, ny, eight_conn, true, -1); // all boundaries</span></div>
+<div class="line"><a id="l00867" name="l00867"></a><span class="lineno">  867</span>            }</div>
+<div class="line"><a id="l00868" name="l00868"></a><span class="lineno">  868</span>            <span class="keywordflow">else</span></div>
+<div class="line"><a id="l00869" name="l00869"></a><span class="lineno">  869</span>            {</div>
+<div class="line"><a id="l00870" name="l00870"></a><span class="lineno">  870</span>                <a class="code hl_function" href="Initialize__Geometry_8cpp.html#a8626305623c25e2692534b76786a433d">KeepOnlyConnectedToBoundary_3D</a>(fg, nx, ny, nz, twenty_six, <span class="keyword">false</span>, 0);</div>
 <div class="line"><a id="l00871" name="l00871"></a><span class="lineno">  871</span>            }</div>
 <div class="line"><a id="l00872" name="l00872"></a><span class="lineno">  872</span>        }</div>
-<div class="line"><a id="l00873" name="l00873"></a><span class="lineno">  873</span>        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (mode == 1)</div>
+<div class="line"><a id="l00873" name="l00873"></a><span class="lineno">  873</span>        <span class="keywordflow">else</span></div>
 <div class="line"><a id="l00874" name="l00874"></a><span class="lineno">  874</span>        {</div>
-<div class="line"><a id="l00875" name="l00875"></a><span class="lineno">  875</span>            <span class="comment">// PSE: electrolyte = NOT solid</span></div>
-<div class="line"><a id="l00876" name="l00876"></a><span class="lineno">  876</span>            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> idx=0; idx&lt;nx*ny*nz; ++idx) fg[idx] = solid_base[idx] ? 0 : 1;</div>
-<div class="line"><a id="l00877" name="l00877"></a><span class="lineno">  877</span> </div>
-<div class="line"><a id="l00878" name="l00878"></a><span class="lineno">  878</span>            <span class="keywordflow">if</span> (nz == 1)</div>
-<div class="line"><a id="l00879" name="l00879"></a><span class="lineno">  879</span>            {</div>
-<div class="line"><a id="l00880" name="l00880"></a><span class="lineno">  880</span>                <a class="code hl_function" href="Initialize__Geometry_8cpp.html#acc203b7a1d300ef69ceae5d20f0aacff">KeepOnlyConnectedToBoundary_2D</a>(fg, nx, ny, eight_conn, <span class="keyword">false</span>, 0); <span class="comment">// pse boundary</span></div>
-<div class="line"><a id="l00881" name="l00881"></a><span class="lineno">  881</span>                <span class="comment">// KeepOnlyConnectedToBoundary_2D(fg, nx, ny, eight_conn, true, -1); // all boundaries</span></div>
-<div class="line"><a id="l00882" name="l00882"></a><span class="lineno">  882</span>            }</div>
-<div class="line"><a id="l00883" name="l00883"></a><span class="lineno">  883</span>            <span class="keywordflow">else</span></div>
-<div class="line"><a id="l00884" name="l00884"></a><span class="lineno">  884</span>            {</div>
-<div class="line"><a id="l00885" name="l00885"></a><span class="lineno">  885</span>                <a class="code hl_function" href="Initialize__Geometry_8cpp.html#a8626305623c25e2692534b76786a433d">KeepOnlyConnectedToBoundary_3D</a>(fg, nx, ny, nz, twenty_six, <span class="keyword">false</span>, 0);</div>
-<div class="line"><a id="l00886" name="l00886"></a><span class="lineno">  886</span>            }</div>
-<div class="line"><a id="l00887" name="l00887"></a><span class="lineno">  887</span>        }</div>
-<div class="line"><a id="l00888" name="l00888"></a><span class="lineno">  888</span>        <span class="keywordflow">else</span></div>
-<div class="line"><a id="l00889" name="l00889"></a><span class="lineno">  889</span>        {</div>
-<div class="line"><a id="l00890" name="l00890"></a><span class="lineno">  890</span>            MFEM_ABORT(<span class="stringliteral">&quot;ComputePDEFilter: mode must be 0 (psi) or 1 (pse).&quot;</span>);</div>
-<div class="line"><a id="l00891" name="l00891"></a><span class="lineno">  891</span>        }</div>
-<div class="line"><a id="l00892" name="l00892"></a><span class="lineno">  892</span>    }</div>
-<div class="line"><a id="l00893" name="l00893"></a><span class="lineno">  893</span> </div>
-<div class="line"><a id="l00894" name="l00894"></a><span class="lineno">  894</span>    <span class="comment">// Broadcast full mask to all ranks</span></div>
-<div class="line"><a id="l00895" name="l00895"></a><span class="lineno">  895</span>    MPI_Bcast(fg.data(), (<span class="keywordtype">int</span>)fg.size(), MPI_UNSIGNED_CHAR, 0, MPI_COMM_WORLD);</div>
-<div class="line"><a id="l00896" name="l00896"></a><span class="lineno">  896</span> </div>
-<div class="line"><a id="l00897" name="l00897"></a><span class="lineno">  897</span>    mfem::ParGridFunction ls_coeff_dg(<a class="code hl_variable" href="classInitialize__Geometry.html#a7595f17d99d4aac6d6972115300caa16">parfespace_dg</a>.get());</div>
-<div class="line"><a id="l00898" name="l00898"></a><span class="lineno">  898</span>    mfem::ParGridFunction filt_dg(<a class="code hl_variable" href="classInitialize__Geometry.html#a7595f17d99d4aac6d6972115300caa16">parfespace_dg</a>.get());</div>
-<div class="line"><a id="l00899" name="l00899"></a><span class="lineno">  899</span> </div>
-<div class="line"><a id="l00900" name="l00900"></a><span class="lineno">  900</span>    ls_coeff_dg = 0.0;</div>
-<div class="line"><a id="l00901" name="l00901"></a><span class="lineno">  901</span>    filt_dg     = 0.0;</div>
-<div class="line"><a id="l00902" name="l00902"></a><span class="lineno">  902</span> </div>
-<div class="line"><a id="l00903" name="l00903"></a><span class="lineno">  903</span>    <span class="keyword">struct </span>FGCoeffND : <span class="keyword">public</span> mfem::Coefficient</div>
-<div class="line"><a id="l00904" name="l00904"></a><span class="lineno">  904</span>    {</div>
-<div class="line"><a id="l00905" name="l00905"></a><span class="lineno">  905</span>        <span class="keywordtype">int</span> nx, ny, nz;</div>
-<div class="line"><a id="l00906" name="l00906"></a><span class="lineno">  906</span>        <span class="keywordtype">int</span> dim;</div>
-<div class="line"><a id="l00907" name="l00907"></a><span class="lineno">  907</span>        <span class="keywordtype">double</span> x0,y0,z0, dxp,dyp,dzp;</div>
-<div class="line"><a id="l00908" name="l00908"></a><span class="lineno">  908</span>        <span class="keyword">const</span> std::vector&lt;uint8_t&gt; *fg;</div>
-<div class="line"><a id="l00909" name="l00909"></a><span class="lineno">  909</span> </div>
-<div class="line"><a id="l00910" name="l00910"></a><span class="lineno">  910</span>        FGCoeffND(<span class="keywordtype">int</span> nx_, <span class="keywordtype">int</span> ny_, <span class="keywordtype">int</span> nz_, mfem::ParMesh &amp;pmesh, <span class="keyword">const</span> std::vector&lt;uint8_t&gt; &amp;fg_)</div>
-<div class="line"><a id="l00911" name="l00911"></a><span class="lineno">  911</span>            : nx(nx_), ny(ny_), nz(nz_), fg(&amp;fg_)</div>
-<div class="line"><a id="l00912" name="l00912"></a><span class="lineno">  912</span>        {</div>
-<div class="line"><a id="l00913" name="l00913"></a><span class="lineno">  913</span>            dim = pmesh.Dimension();</div>
-<div class="line"><a id="l00914" name="l00914"></a><span class="lineno">  914</span>            mfem::Vector bbmin, bbmax;</div>
-<div class="line"><a id="l00915" name="l00915"></a><span class="lineno">  915</span>            pmesh.GetBoundingBox(bbmin, bbmax);</div>
+<div class="line"><a id="l00875" name="l00875"></a><span class="lineno">  875</span>            MFEM_ABORT(<span class="stringliteral">&quot;ComputePDEFilter: mode must be 0 (psi) or 1 (pse).&quot;</span>);</div>
+<div class="line"><a id="l00876" name="l00876"></a><span class="lineno">  876</span>        }</div>
+<div class="line"><a id="l00877" name="l00877"></a><span class="lineno">  877</span>    }</div>
+<div class="line"><a id="l00878" name="l00878"></a><span class="lineno">  878</span> </div>
+<div class="line"><a id="l00879" name="l00879"></a><span class="lineno">  879</span>    <span class="comment">// Broadcast full mask to all ranks</span></div>
+<div class="line"><a id="l00880" name="l00880"></a><span class="lineno">  880</span>    MPI_Bcast(fg.data(), (<span class="keywordtype">int</span>)fg.size(), MPI_UNSIGNED_CHAR, 0, MPI_COMM_WORLD);</div>
+<div class="line"><a id="l00881" name="l00881"></a><span class="lineno">  881</span> </div>
+<div class="line"><a id="l00882" name="l00882"></a><span class="lineno">  882</span>    mfem::ParGridFunction ls_coeff_dg(<a class="code hl_variable" href="classInitialize__Geometry.html#a7595f17d99d4aac6d6972115300caa16">parfespace_dg</a>.get());</div>
+<div class="line"><a id="l00883" name="l00883"></a><span class="lineno">  883</span>    mfem::ParGridFunction filt_dg(<a class="code hl_variable" href="classInitialize__Geometry.html#a7595f17d99d4aac6d6972115300caa16">parfespace_dg</a>.get());</div>
+<div class="line"><a id="l00884" name="l00884"></a><span class="lineno">  884</span> </div>
+<div class="line"><a id="l00885" name="l00885"></a><span class="lineno">  885</span>    ls_coeff_dg = 0.0;</div>
+<div class="line"><a id="l00886" name="l00886"></a><span class="lineno">  886</span>    filt_dg     = 0.0;</div>
+<div class="line"><a id="l00887" name="l00887"></a><span class="lineno">  887</span> </div>
+<div class="line"><a id="l00888" name="l00888"></a><span class="lineno">  888</span>    <span class="keyword">struct </span>FGCoeffND : <span class="keyword">public</span> mfem::Coefficient</div>
+<div class="line"><a id="l00889" name="l00889"></a><span class="lineno">  889</span>    {</div>
+<div class="line"><a id="l00890" name="l00890"></a><span class="lineno">  890</span>        <span class="keywordtype">int</span> nx, ny, nz;</div>
+<div class="line"><a id="l00891" name="l00891"></a><span class="lineno">  891</span>        <span class="keywordtype">int</span> dim;</div>
+<div class="line"><a id="l00892" name="l00892"></a><span class="lineno">  892</span>        <span class="keywordtype">double</span> x0,y0,z0, dxp,dyp,dzp;</div>
+<div class="line"><a id="l00893" name="l00893"></a><span class="lineno">  893</span>        <span class="keyword">const</span> std::vector&lt;uint8_t&gt; *fg;</div>
+<div class="line"><a id="l00894" name="l00894"></a><span class="lineno">  894</span> </div>
+<div class="line"><a id="l00895" name="l00895"></a><span class="lineno">  895</span>        FGCoeffND(<span class="keywordtype">int</span> nx_, <span class="keywordtype">int</span> ny_, <span class="keywordtype">int</span> nz_, mfem::ParMesh &amp;pmesh, <span class="keyword">const</span> std::vector&lt;uint8_t&gt; &amp;fg_)</div>
+<div class="line"><a id="l00896" name="l00896"></a><span class="lineno">  896</span>            : nx(nx_), ny(ny_), nz(nz_), fg(&amp;fg_)</div>
+<div class="line"><a id="l00897" name="l00897"></a><span class="lineno">  897</span>        {</div>
+<div class="line"><a id="l00898" name="l00898"></a><span class="lineno">  898</span>            dim = pmesh.Dimension();</div>
+<div class="line"><a id="l00899" name="l00899"></a><span class="lineno">  899</span>            mfem::Vector bbmin, bbmax;</div>
+<div class="line"><a id="l00900" name="l00900"></a><span class="lineno">  900</span>            pmesh.GetBoundingBox(bbmin, bbmax);</div>
+<div class="line"><a id="l00901" name="l00901"></a><span class="lineno">  901</span> </div>
+<div class="line"><a id="l00902" name="l00902"></a><span class="lineno">  902</span>            x0 = bbmin(0); y0 = bbmin(1);</div>
+<div class="line"><a id="l00903" name="l00903"></a><span class="lineno">  903</span>            dxp = (bbmax(0) - bbmin(0)) / (nx - 1);</div>
+<div class="line"><a id="l00904" name="l00904"></a><span class="lineno">  904</span>            dyp = (bbmax(1) - bbmin(1)) / (ny - 1);</div>
+<div class="line"><a id="l00905" name="l00905"></a><span class="lineno">  905</span> </div>
+<div class="line"><a id="l00906" name="l00906"></a><span class="lineno">  906</span>            <span class="keywordflow">if</span> (dim == 3)</div>
+<div class="line"><a id="l00907" name="l00907"></a><span class="lineno">  907</span>            {</div>
+<div class="line"><a id="l00908" name="l00908"></a><span class="lineno">  908</span>                z0  = bbmin(2);</div>
+<div class="line"><a id="l00909" name="l00909"></a><span class="lineno">  909</span>                dzp = (bbmax(2) - bbmin(2)) / (nz - 1);</div>
+<div class="line"><a id="l00910" name="l00910"></a><span class="lineno">  910</span>            }</div>
+<div class="line"><a id="l00911" name="l00911"></a><span class="lineno">  911</span>            <span class="keywordflow">else</span></div>
+<div class="line"><a id="l00912" name="l00912"></a><span class="lineno">  912</span>            {</div>
+<div class="line"><a id="l00913" name="l00913"></a><span class="lineno">  913</span>                z0 = 0.0; dzp = 1.0;</div>
+<div class="line"><a id="l00914" name="l00914"></a><span class="lineno">  914</span>            }</div>
+<div class="line"><a id="l00915" name="l00915"></a><span class="lineno">  915</span>        }</div>
 <div class="line"><a id="l00916" name="l00916"></a><span class="lineno">  916</span> </div>
-<div class="line"><a id="l00917" name="l00917"></a><span class="lineno">  917</span>            x0 = bbmin(0); y0 = bbmin(1);</div>
-<div class="line"><a id="l00918" name="l00918"></a><span class="lineno">  918</span>            dxp = (bbmax(0) - bbmin(0)) / (nx - 1);</div>
-<div class="line"><a id="l00919" name="l00919"></a><span class="lineno">  919</span>            dyp = (bbmax(1) - bbmin(1)) / (ny - 1);</div>
-<div class="line"><a id="l00920" name="l00920"></a><span class="lineno">  920</span> </div>
-<div class="line"><a id="l00921" name="l00921"></a><span class="lineno">  921</span>            <span class="keywordflow">if</span> (dim == 3)</div>
-<div class="line"><a id="l00922" name="l00922"></a><span class="lineno">  922</span>            {</div>
-<div class="line"><a id="l00923" name="l00923"></a><span class="lineno">  923</span>                z0  = bbmin(2);</div>
-<div class="line"><a id="l00924" name="l00924"></a><span class="lineno">  924</span>                dzp = (bbmax(2) - bbmin(2)) / (nz - 1);</div>
-<div class="line"><a id="l00925" name="l00925"></a><span class="lineno">  925</span>            }</div>
-<div class="line"><a id="l00926" name="l00926"></a><span class="lineno">  926</span>            <span class="keywordflow">else</span></div>
-<div class="line"><a id="l00927" name="l00927"></a><span class="lineno">  927</span>            {</div>
-<div class="line"><a id="l00928" name="l00928"></a><span class="lineno">  928</span>                z0 = 0.0; dzp = 1.0;</div>
-<div class="line"><a id="l00929" name="l00929"></a><span class="lineno">  929</span>            }</div>
-<div class="line"><a id="l00930" name="l00930"></a><span class="lineno">  930</span>        }</div>
-<div class="line"><a id="l00931" name="l00931"></a><span class="lineno">  931</span> </div>
-<div class="line"><a id="l00932" name="l00932"></a><span class="lineno">  932</span>        <span class="keywordtype">double</span> Eval(mfem::ElementTransformation &amp;T, <span class="keyword">const</span> mfem::IntegrationPoint &amp;ip)<span class="keyword"> override</span></div>
-<div class="line"><a id="l00933" name="l00933"></a><span class="lineno">  933</span><span class="keyword">        </span>{</div>
-<div class="line"><a id="l00934" name="l00934"></a><span class="lineno">  934</span>            mfem::Vector X;</div>
-<div class="line"><a id="l00935" name="l00935"></a><span class="lineno">  935</span>            T.Transform(ip, X);</div>
-<div class="line"><a id="l00936" name="l00936"></a><span class="lineno">  936</span> </div>
-<div class="line"><a id="l00937" name="l00937"></a><span class="lineno">  937</span>            <span class="keywordtype">int</span> i = (int)std::floor((X(0) - x0)/dxp + 0.5);</div>
-<div class="line"><a id="l00938" name="l00938"></a><span class="lineno">  938</span>            <span class="keywordtype">int</span> j = (int)std::floor((X(1) - y0)/dyp + 0.5);</div>
-<div class="line"><a id="l00939" name="l00939"></a><span class="lineno">  939</span>            i = std::max(0, std::min(nx-1, i));</div>
-<div class="line"><a id="l00940" name="l00940"></a><span class="lineno">  940</span>            j = std::max(0, std::min(ny-1, j));</div>
+<div class="line"><a id="l00917" name="l00917"></a><span class="lineno">  917</span>        <span class="keywordtype">double</span> Eval(mfem::ElementTransformation &amp;T, <span class="keyword">const</span> mfem::IntegrationPoint &amp;ip)<span class="keyword"> override</span></div>
+<div class="line"><a id="l00918" name="l00918"></a><span class="lineno">  918</span><span class="keyword">        </span>{</div>
+<div class="line"><a id="l00919" name="l00919"></a><span class="lineno">  919</span>            mfem::Vector X;</div>
+<div class="line"><a id="l00920" name="l00920"></a><span class="lineno">  920</span>            T.Transform(ip, X);</div>
+<div class="line"><a id="l00921" name="l00921"></a><span class="lineno">  921</span> </div>
+<div class="line"><a id="l00922" name="l00922"></a><span class="lineno">  922</span>            <span class="keywordtype">int</span> i = (int)std::floor((X(0) - x0)/dxp + 0.5);</div>
+<div class="line"><a id="l00923" name="l00923"></a><span class="lineno">  923</span>            <span class="keywordtype">int</span> j = (int)std::floor((X(1) - y0)/dyp + 0.5);</div>
+<div class="line"><a id="l00924" name="l00924"></a><span class="lineno">  924</span>            i = std::max(0, std::min(nx-1, i));</div>
+<div class="line"><a id="l00925" name="l00925"></a><span class="lineno">  925</span>            j = std::max(0, std::min(ny-1, j));</div>
+<div class="line"><a id="l00926" name="l00926"></a><span class="lineno">  926</span> </div>
+<div class="line"><a id="l00927" name="l00927"></a><span class="lineno">  927</span>            <span class="keywordtype">int</span> k = 0;</div>
+<div class="line"><a id="l00928" name="l00928"></a><span class="lineno">  928</span>            <span class="keywordflow">if</span> (dim == 3)</div>
+<div class="line"><a id="l00929" name="l00929"></a><span class="lineno">  929</span>            {</div>
+<div class="line"><a id="l00930" name="l00930"></a><span class="lineno">  930</span>                k = (int)std::floor((X(2) - z0)/dzp + 0.5);</div>
+<div class="line"><a id="l00931" name="l00931"></a><span class="lineno">  931</span>                k = std::max(0, std::min(nz-1, k));</div>
+<div class="line"><a id="l00932" name="l00932"></a><span class="lineno">  932</span>            }</div>
+<div class="line"><a id="l00933" name="l00933"></a><span class="lineno">  933</span> </div>
+<div class="line"><a id="l00934" name="l00934"></a><span class="lineno">  934</span>            <span class="keyword">const</span> <span class="keywordtype">int</span> idx = i + nx*j + nx*ny*k;</div>
+<div class="line"><a id="l00935" name="l00935"></a><span class="lineno">  935</span>            <span class="keywordflow">return</span> (*fg)[idx] ? +1.0 : -1.0;</div>
+<div class="line"><a id="l00936" name="l00936"></a><span class="lineno">  936</span>        }</div>
+<div class="line"><a id="l00937" name="l00937"></a><span class="lineno">  937</span>    };</div>
+<div class="line"><a id="l00938" name="l00938"></a><span class="lineno">  938</span> </div>
+<div class="line"><a id="l00939" name="l00939"></a><span class="lineno">  939</span>    FGCoeffND fgcoef(nx, ny, nz, *<a class="code hl_variable" href="classInitialize__Geometry.html#ac335021b2788680688969e410abd6ca8">parallelMesh</a>, fg);</div>
+<div class="line"><a id="l00940" name="l00940"></a><span class="lineno">  940</span>    ls_coeff_dg.ProjectCoefficient(fgcoef); </div>
 <div class="line"><a id="l00941" name="l00941"></a><span class="lineno">  941</span> </div>
-<div class="line"><a id="l00942" name="l00942"></a><span class="lineno">  942</span>            <span class="keywordtype">int</span> k = 0;</div>
-<div class="line"><a id="l00943" name="l00943"></a><span class="lineno">  943</span>            <span class="keywordflow">if</span> (dim == 3)</div>
-<div class="line"><a id="l00944" name="l00944"></a><span class="lineno">  944</span>            {</div>
-<div class="line"><a id="l00945" name="l00945"></a><span class="lineno">  945</span>                k = (int)std::floor((X(2) - z0)/dzp + 0.5);</div>
-<div class="line"><a id="l00946" name="l00946"></a><span class="lineno">  946</span>                k = std::max(0, std::min(nz-1, k));</div>
-<div class="line"><a id="l00947" name="l00947"></a><span class="lineno">  947</span>            }</div>
+<div class="line"><a id="l00942" name="l00942"></a><span class="lineno">  942</span> </div>
+<div class="line"><a id="l00943" name="l00943"></a><span class="lineno">  943</span> </div>
+<div class="line"><a id="l00944" name="l00944"></a><span class="lineno">  944</span>    <span class="comment">// ------------------ PDEFilter ------------------</span></div>
+<div class="line"><a id="l00945" name="l00945"></a><span class="lineno">  945</span>    <span class="keyword">const</span> <span class="keywordtype">double</span> filter_weight = 3 * dx;</div>
+<div class="line"><a id="l00946" name="l00946"></a><span class="lineno">  946</span>    mfem::common::PDEFilter filter(*<a class="code hl_variable" href="classInitialize__Geometry.html#ac335021b2788680688969e410abd6ca8">parallelMesh</a>, filter_weight);</div>
+<div class="line"><a id="l00947" name="l00947"></a><span class="lineno">  947</span>    filter.Filter(ls_coeff_dg, filt_dg);</div>
 <div class="line"><a id="l00948" name="l00948"></a><span class="lineno">  948</span> </div>
-<div class="line"><a id="l00949" name="l00949"></a><span class="lineno">  949</span>            <span class="keyword">const</span> <span class="keywordtype">int</span> idx = i + nx*j + nx*ny*k;</div>
-<div class="line"><a id="l00950" name="l00950"></a><span class="lineno">  950</span>            <span class="keywordflow">return</span> (*fg)[idx] ? +1.0 : -1.0;</div>
-<div class="line"><a id="l00951" name="l00951"></a><span class="lineno">  951</span>        }</div>
-<div class="line"><a id="l00952" name="l00952"></a><span class="lineno">  952</span>    };</div>
+<div class="line"><a id="l00949" name="l00949"></a><span class="lineno">  949</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; filt_dg.Size(); i++)</div>
+<div class="line"><a id="l00950" name="l00950"></a><span class="lineno">  950</span>    {</div>
+<div class="line"><a id="l00951" name="l00951"></a><span class="lineno">  951</span>        filt_dg(i) = 0.5*(filt_dg(i) + 1.0);</div>
+<div class="line"><a id="l00952" name="l00952"></a><span class="lineno">  952</span>    }</div>
 <div class="line"><a id="l00953" name="l00953"></a><span class="lineno">  953</span> </div>
-<div class="line"><a id="l00954" name="l00954"></a><span class="lineno">  954</span>    FGCoeffND fgcoef(nx, ny, nz, *<a class="code hl_variable" href="classInitialize__Geometry.html#ac335021b2788680688969e410abd6ca8">parallelMesh</a>, fg);</div>
-<div class="line"><a id="l00955" name="l00955"></a><span class="lineno">  955</span>    ls_coeff_dg.ProjectCoefficient(fgcoef); </div>
-<div class="line"><a id="l00956" name="l00956"></a><span class="lineno">  956</span> </div>
-<div class="line"><a id="l00957" name="l00957"></a><span class="lineno">  957</span> </div>
+<div class="line"><a id="l00954" name="l00954"></a><span class="lineno">  954</span>    mfem::GridFunctionCoefficient ls_filt_coeff(&amp;filt_dg);</div>
+<div class="line"><a id="l00955" name="l00955"></a><span class="lineno">  955</span> </div>
+<div class="line"><a id="l00956" name="l00956"></a><span class="lineno">  956</span>    filt_gf.ProjectGridFunction(filt_dg);</div>
+<div class="line"><a id="l00957" name="l00957"></a><span class="lineno">  957</span>}</div>
 <div class="line"><a id="l00958" name="l00958"></a><span class="lineno">  958</span> </div>
-<div class="line"><a id="l00959" name="l00959"></a><span class="lineno">  959</span>    <span class="comment">// ------------------ PDEFilter ------------------</span></div>
-<div class="line"><a id="l00960" name="l00960"></a><span class="lineno">  960</span>    <span class="keyword">const</span> <span class="keywordtype">double</span> filter_weight = 3 * dx;</div>
-<div class="line"><a id="l00961" name="l00961"></a><span class="lineno">  961</span>    mfem::common::PDEFilter filter(*<a class="code hl_variable" href="classInitialize__Geometry.html#ac335021b2788680688969e410abd6ca8">parallelMesh</a>, filter_weight);</div>
-<div class="line"><a id="l00962" name="l00962"></a><span class="lineno">  962</span>    filter.Filter(ls_coeff_dg, filt_dg);</div>
-<div class="line"><a id="l00963" name="l00963"></a><span class="lineno">  963</span> </div>
-<div class="line"><a id="l00964" name="l00964"></a><span class="lineno">  964</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; filt_dg.Size(); i++)</div>
-<div class="line"><a id="l00965" name="l00965"></a><span class="lineno">  965</span>    {</div>
-<div class="line"><a id="l00966" name="l00966"></a><span class="lineno">  966</span>        filt_dg(i) = 0.5*(filt_dg(i) + 1.0);</div>
-<div class="line"><a id="l00967" name="l00967"></a><span class="lineno">  967</span>    }</div>
-<div class="line"><a id="l00968" name="l00968"></a><span class="lineno">  968</span> </div>
-<div class="line"><a id="l00969" name="l00969"></a><span class="lineno">  969</span>    mfem::GridFunctionCoefficient ls_filt_coeff(&amp;filt_dg);</div>
-<div class="line"><a id="l00970" name="l00970"></a><span class="lineno">  970</span> </div>
-<div class="line"><a id="l00971" name="l00971"></a><span class="lineno">  971</span>    filt_gf.ProjectGridFunction(filt_dg);</div>
-<div class="line"><a id="l00972" name="l00972"></a><span class="lineno">  972</span>}</div>
+<div class="line"><a id="l00959" name="l00959"></a><span class="lineno"><a class="line" href="classInitialize__Geometry.html#a1aa876d4ae89b6c6e6f03091168a85f7">  959</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classInitialize__Geometry.html#a1aa876d4ae89b6c6e6f03091168a85f7">Initialize_Geometry::ComputePDEFilterLabel</a>(mfem::ParGridFunction &amp;dist,</div>
+<div class="line"><a id="l00960" name="l00960"></a><span class="lineno">  960</span>                                                mfem::ParGridFunction &amp;filt_gf,</div>
+<div class="line"><a id="l00961" name="l00961"></a><span class="lineno">  961</span>                                                <span class="keywordtype">int</span> target_label,</div>
+<div class="line"><a id="l00962" name="l00962"></a><span class="lineno">  962</span>                                                <span class="keywordtype">bool</span> keep_boundary_connected,</div>
+<div class="line"><a id="l00963" name="l00963"></a><span class="lineno">  963</span>                                                <span class="keywordtype">int</span> seed_side_or_face)</div>
+<div class="line"><a id="l00964" name="l00964"></a><span class="lineno">  964</span>{</div>
+<div class="line"><a id="l00965" name="l00965"></a><span class="lineno">  965</span>    MFEM_VERIFY(<a class="code hl_variable" href="classInitialize__Geometry.html#ac335021b2788680688969e410abd6ca8">parallelMesh</a>, <span class="stringliteral">&quot;parallelMesh is not initialized.&quot;</span>);</div>
+<div class="line"><a id="l00966" name="l00966"></a><span class="lineno">  966</span>    MFEM_VERIFY(<a class="code hl_variable" href="classInitialize__Geometry.html#a077e3a87b03b572967278fbaf75cee53">parfespace</a>, <span class="stringliteral">&quot;parfespace is not initialized.&quot;</span>);</div>
+<div class="line"><a id="l00967" name="l00967"></a><span class="lineno">  967</span>    MFEM_VERIFY(<a class="code hl_variable" href="classInitialize__Geometry.html#aa25297c6da9c4510dfc0a9a62cefbaf8">Vox</a>, <span class="stringliteral">&quot;Vox is not initialized (need .tif path + MapGlobalToLocal).&quot;</span>);</div>
+<div class="line"><a id="l00968" name="l00968"></a><span class="lineno">  968</span>    MFEM_VERIFY(dist.ParFESpace() == <a class="code hl_variable" href="classInitialize__Geometry.html#a077e3a87b03b572967278fbaf75cee53">parfespace</a>.get(), <span class="stringliteral">&quot;dist must be on parfespace.&quot;</span>);</div>
+<div class="line"><a id="l00969" name="l00969"></a><span class="lineno">  969</span>    MFEM_VERIFY(filt_gf.ParFESpace() == <a class="code hl_variable" href="classInitialize__Geometry.html#a077e3a87b03b572967278fbaf75cee53">parfespace</a>.get(), <span class="stringliteral">&quot;filt_gf must be on parfespace.&quot;</span>);</div>
+<div class="line"><a id="l00970" name="l00970"></a><span class="lineno">  970</span>    MFEM_VERIFY(<a class="code hl_variable" href="classInitialize__Geometry.html#a7595f17d99d4aac6d6972115300caa16">parfespace_dg</a>, <span class="stringliteral">&quot;parfespace_dg is not initialized.&quot;</span>);</div>
+<div class="line"><a id="l00971" name="l00971"></a><span class="lineno">  971</span> </div>
+<div class="line"><a id="l00972" name="l00972"></a><span class="lineno">  972</span>    <span class="keyword">const</span> <span class="keywordtype">double</span> dx = <a class="code hl_variable" href="classInitialize__Geometry.html#ac335021b2788680688969e410abd6ca8">parallelMesh</a>-&gt;GetElementSize(0);</div>
 <div class="line"><a id="l00973" name="l00973"></a><span class="lineno">  973</span> </div>
-<div class="line"><a id="l00974" name="l00974"></a><span class="lineno"><a class="line" href="classInitialize__Geometry.html#a1aa876d4ae89b6c6e6f03091168a85f7">  974</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classInitialize__Geometry.html#a1aa876d4ae89b6c6e6f03091168a85f7">Initialize_Geometry::ComputePDEFilterLabel</a>(mfem::ParGridFunction &amp;dist,</div>
-<div class="line"><a id="l00975" name="l00975"></a><span class="lineno">  975</span>                                                mfem::ParGridFunction &amp;filt_gf,</div>
-<div class="line"><a id="l00976" name="l00976"></a><span class="lineno">  976</span>                                                <span class="keywordtype">int</span> target_label,</div>
-<div class="line"><a id="l00977" name="l00977"></a><span class="lineno">  977</span>                                                <span class="keywordtype">bool</span> keep_boundary_connected,</div>
-<div class="line"><a id="l00978" name="l00978"></a><span class="lineno">  978</span>                                                <span class="keywordtype">int</span> seed_side_or_face)</div>
-<div class="line"><a id="l00979" name="l00979"></a><span class="lineno">  979</span>{</div>
-<div class="line"><a id="l00980" name="l00980"></a><span class="lineno">  980</span>    MFEM_VERIFY(<a class="code hl_variable" href="classInitialize__Geometry.html#ac335021b2788680688969e410abd6ca8">parallelMesh</a>, <span class="stringliteral">&quot;parallelMesh is not initialized.&quot;</span>);</div>
-<div class="line"><a id="l00981" name="l00981"></a><span class="lineno">  981</span>    MFEM_VERIFY(<a class="code hl_variable" href="classInitialize__Geometry.html#a077e3a87b03b572967278fbaf75cee53">parfespace</a>, <span class="stringliteral">&quot;parfespace is not initialized.&quot;</span>);</div>
-<div class="line"><a id="l00982" name="l00982"></a><span class="lineno">  982</span>    MFEM_VERIFY(<a class="code hl_variable" href="classInitialize__Geometry.html#aa25297c6da9c4510dfc0a9a62cefbaf8">Vox</a>, <span class="stringliteral">&quot;Vox is not initialized (need .tif path + MapGlobalToLocal).&quot;</span>);</div>
-<div class="line"><a id="l00983" name="l00983"></a><span class="lineno">  983</span>    MFEM_VERIFY(dist.ParFESpace() == <a class="code hl_variable" href="classInitialize__Geometry.html#a077e3a87b03b572967278fbaf75cee53">parfespace</a>.get(), <span class="stringliteral">&quot;dist must be on parfespace.&quot;</span>);</div>
-<div class="line"><a id="l00984" name="l00984"></a><span class="lineno">  984</span>    MFEM_VERIFY(filt_gf.ParFESpace() == <a class="code hl_variable" href="classInitialize__Geometry.html#a077e3a87b03b572967278fbaf75cee53">parfespace</a>.get(), <span class="stringliteral">&quot;filt_gf must be on parfespace.&quot;</span>);</div>
-<div class="line"><a id="l00985" name="l00985"></a><span class="lineno">  985</span>    MFEM_VERIFY(<a class="code hl_variable" href="classInitialize__Geometry.html#a7595f17d99d4aac6d6972115300caa16">parfespace_dg</a>, <span class="stringliteral">&quot;parfespace_dg is not initialized.&quot;</span>);</div>
+<div class="line"><a id="l00974" name="l00974"></a><span class="lineno">  974</span>    MFEM_VERIFY(<a class="code hl_variable" href="classInitialize__Geometry.html#ac335021b2788680688969e410abd6ca8">parallelMesh</a>-&gt;Dimension() == 2 || <a class="code hl_variable" href="classInitialize__Geometry.html#ac335021b2788680688969e410abd6ca8">parallelMesh</a>-&gt;Dimension() == 3,</div>
+<div class="line"><a id="l00975" name="l00975"></a><span class="lineno">  975</span>                <span class="stringliteral">&quot;ComputePDEFilterLabel: mesh must be 2D or 3D.&quot;</span>);</div>
+<div class="line"><a id="l00976" name="l00976"></a><span class="lineno">  976</span> </div>
+<div class="line"><a id="l00977" name="l00977"></a><span class="lineno">  977</span>    <span class="keyword">const</span> <span class="keywordtype">int</span> nz = (int)<a class="code hl_variable" href="classInitialize__Geometry.html#a27aeeb194755111fc32cab304b089a77">tiffData</a>.size();</div>
+<div class="line"><a id="l00978" name="l00978"></a><span class="lineno">  978</span>    <span class="keyword">const</span> <span class="keywordtype">int</span> ny = (int)<a class="code hl_variable" href="classInitialize__Geometry.html#a27aeeb194755111fc32cab304b089a77">tiffData</a>[0].size();</div>
+<div class="line"><a id="l00979" name="l00979"></a><span class="lineno">  979</span>    <span class="keyword">const</span> <span class="keywordtype">int</span> nx = (int)<a class="code hl_variable" href="classInitialize__Geometry.html#a27aeeb194755111fc32cab304b089a77">tiffData</a>[0][0].size();</div>
+<div class="line"><a id="l00980" name="l00980"></a><span class="lineno">  980</span> </div>
+<div class="line"><a id="l00981" name="l00981"></a><span class="lineno">  981</span>    <span class="keyword">const</span> <span class="keywordtype">int</span> rank = mfem::Mpi::WorldRank();</div>
+<div class="line"><a id="l00982" name="l00982"></a><span class="lineno">  982</span>    <span class="keyword">const</span> <span class="keywordtype">bool</span> eight_conn = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00983" name="l00983"></a><span class="lineno">  983</span>    <span class="keyword">const</span> <span class="keywordtype">bool</span> twenty_six = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00984" name="l00984"></a><span class="lineno">  984</span> </div>
+<div class="line"><a id="l00985" name="l00985"></a><span class="lineno">  985</span>    std::vector&lt;uint8_t&gt; fg(nx * ny * nz, 0);</div>
 <div class="line"><a id="l00986" name="l00986"></a><span class="lineno">  986</span> </div>
-<div class="line"><a id="l00987" name="l00987"></a><span class="lineno">  987</span>    <span class="keyword">const</span> <span class="keywordtype">double</span> dx = <a class="code hl_variable" href="classInitialize__Geometry.html#ac335021b2788680688969e410abd6ca8">parallelMesh</a>-&gt;GetElementSize(0);</div>
-<div class="line"><a id="l00988" name="l00988"></a><span class="lineno">  988</span> </div>
-<div class="line"><a id="l00989" name="l00989"></a><span class="lineno">  989</span>    MFEM_VERIFY(<a class="code hl_variable" href="classInitialize__Geometry.html#ac335021b2788680688969e410abd6ca8">parallelMesh</a>-&gt;Dimension() == 2 || <a class="code hl_variable" href="classInitialize__Geometry.html#ac335021b2788680688969e410abd6ca8">parallelMesh</a>-&gt;Dimension() == 3,</div>
-<div class="line"><a id="l00990" name="l00990"></a><span class="lineno">  990</span>                <span class="stringliteral">&quot;ComputePDEFilterLabel: mesh must be 2D or 3D.&quot;</span>);</div>
-<div class="line"><a id="l00991" name="l00991"></a><span class="lineno">  991</span> </div>
-<div class="line"><a id="l00992" name="l00992"></a><span class="lineno">  992</span>    <span class="keyword">const</span> <span class="keywordtype">int</span> nz = (int)<a class="code hl_variable" href="classInitialize__Geometry.html#a27aeeb194755111fc32cab304b089a77">tiffData</a>.size();</div>
-<div class="line"><a id="l00993" name="l00993"></a><span class="lineno">  993</span>    <span class="keyword">const</span> <span class="keywordtype">int</span> ny = (int)<a class="code hl_variable" href="classInitialize__Geometry.html#a27aeeb194755111fc32cab304b089a77">tiffData</a>[0].size();</div>
-<div class="line"><a id="l00994" name="l00994"></a><span class="lineno">  994</span>    <span class="keyword">const</span> <span class="keywordtype">int</span> nx = (int)<a class="code hl_variable" href="classInitialize__Geometry.html#a27aeeb194755111fc32cab304b089a77">tiffData</a>[0][0].size();</div>
-<div class="line"><a id="l00995" name="l00995"></a><span class="lineno">  995</span> </div>
-<div class="line"><a id="l00996" name="l00996"></a><span class="lineno">  996</span>    <span class="keyword">const</span> <span class="keywordtype">int</span> rank = mfem::Mpi::WorldRank();</div>
-<div class="line"><a id="l00997" name="l00997"></a><span class="lineno">  997</span>    <span class="keyword">const</span> <span class="keywordtype">bool</span> eight_conn = <span class="keyword">false</span>;</div>
-<div class="line"><a id="l00998" name="l00998"></a><span class="lineno">  998</span>    <span class="keyword">const</span> <span class="keywordtype">bool</span> twenty_six = <span class="keyword">false</span>;</div>
-<div class="line"><a id="l00999" name="l00999"></a><span class="lineno">  999</span> </div>
-<div class="line"><a id="l01000" name="l01000"></a><span class="lineno"> 1000</span>    std::vector&lt;uint8_t&gt; fg(nx * ny * nz, 0);</div>
-<div class="line"><a id="l01001" name="l01001"></a><span class="lineno"> 1001</span> </div>
-<div class="line"><a id="l01002" name="l01002"></a><span class="lineno"> 1002</span>    <span class="keywordflow">if</span> (rank == 0)</div>
-<div class="line"><a id="l01003" name="l01003"></a><span class="lineno"> 1003</span>    {</div>
-<div class="line"><a id="l01004" name="l01004"></a><span class="lineno"> 1004</span>        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> k = 0; k &lt; nz; ++k)</div>
-<div class="line"><a id="l01005" name="l01005"></a><span class="lineno"> 1005</span>        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> j = 0; j &lt; ny; ++j)</div>
-<div class="line"><a id="l01006" name="l01006"></a><span class="lineno"> 1006</span>        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; nx; ++i)</div>
-<div class="line"><a id="l01007" name="l01007"></a><span class="lineno"> 1007</span>        {</div>
-<div class="line"><a id="l01008" name="l01008"></a><span class="lineno"> 1008</span>            <span class="keyword">const</span> <span class="keywordtype">int</span> idx = i + nx*j + nx*ny*k;</div>
-<div class="line"><a id="l01009" name="l01009"></a><span class="lineno"> 1009</span>            <span class="comment">// fg[idx] = (tiffData[k][j][i] == target_label) ? 1 : 0;</span></div>
-<div class="line"><a id="l01010" name="l01010"></a><span class="lineno"> 1010</span>            <span class="keywordflow">if</span> (<a class="code hl_variable" href="classInitialize__Geometry.html#abcc8ecfa7dc6f84c8ee3c4cb6c519c80">combine_particle_groups</a>)</div>
-<div class="line"><a id="l01011" name="l01011"></a><span class="lineno"> 1011</span>            {</div>
-<div class="line"><a id="l01012" name="l01012"></a><span class="lineno"> 1012</span>                fg[idx] = (<a class="code hl_variable" href="classInitialize__Geometry.html#a27aeeb194755111fc32cab304b089a77">tiffData</a>[k][j][i] &gt; 0) ? 1 : 0;</div>
+<div class="line"><a id="l00987" name="l00987"></a><span class="lineno">  987</span>    <span class="keywordflow">if</span> (rank == 0)</div>
+<div class="line"><a id="l00988" name="l00988"></a><span class="lineno">  988</span>    {</div>
+<div class="line"><a id="l00989" name="l00989"></a><span class="lineno">  989</span>        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> k = 0; k &lt; nz; ++k)</div>
+<div class="line"><a id="l00990" name="l00990"></a><span class="lineno">  990</span>        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> j = 0; j &lt; ny; ++j)</div>
+<div class="line"><a id="l00991" name="l00991"></a><span class="lineno">  991</span>        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; nx; ++i)</div>
+<div class="line"><a id="l00992" name="l00992"></a><span class="lineno">  992</span>        {</div>
+<div class="line"><a id="l00993" name="l00993"></a><span class="lineno">  993</span>            <span class="keyword">const</span> <span class="keywordtype">int</span> idx = i + nx*j + nx*ny*k;</div>
+<div class="line"><a id="l00994" name="l00994"></a><span class="lineno">  994</span>            <span class="comment">// fg[idx] = (tiffData[k][j][i] == target_label) ? 1 : 0;</span></div>
+<div class="line"><a id="l00995" name="l00995"></a><span class="lineno">  995</span>            <span class="keywordflow">if</span> (<a class="code hl_variable" href="classInitialize__Geometry.html#abcc8ecfa7dc6f84c8ee3c4cb6c519c80">combine_particle_groups</a>)</div>
+<div class="line"><a id="l00996" name="l00996"></a><span class="lineno">  996</span>            {</div>
+<div class="line"><a id="l00997" name="l00997"></a><span class="lineno">  997</span>                fg[idx] = (<a class="code hl_variable" href="classInitialize__Geometry.html#a27aeeb194755111fc32cab304b089a77">tiffData</a>[k][j][i] &gt; 0) ? 1 : 0;</div>
+<div class="line"><a id="l00998" name="l00998"></a><span class="lineno">  998</span>            }</div>
+<div class="line"><a id="l00999" name="l00999"></a><span class="lineno">  999</span>            <span class="keywordflow">else</span></div>
+<div class="line"><a id="l01000" name="l01000"></a><span class="lineno"> 1000</span>            {</div>
+<div class="line"><a id="l01001" name="l01001"></a><span class="lineno"> 1001</span>                fg[idx] = (<a class="code hl_variable" href="classInitialize__Geometry.html#a27aeeb194755111fc32cab304b089a77">tiffData</a>[k][j][i] == target_label) ? 1 : 0;</div>
+<div class="line"><a id="l01002" name="l01002"></a><span class="lineno"> 1002</span>            }</div>
+<div class="line"><a id="l01003" name="l01003"></a><span class="lineno"> 1003</span>        }</div>
+<div class="line"><a id="l01004" name="l01004"></a><span class="lineno"> 1004</span> </div>
+<div class="line"><a id="l01005" name="l01005"></a><span class="lineno"> 1005</span>        <span class="keywordflow">if</span> (keep_boundary_connected)</div>
+<div class="line"><a id="l01006" name="l01006"></a><span class="lineno"> 1006</span>        {</div>
+<div class="line"><a id="l01007" name="l01007"></a><span class="lineno"> 1007</span>            <span class="keywordflow">if</span> (nz == 1)</div>
+<div class="line"><a id="l01008" name="l01008"></a><span class="lineno"> 1008</span>            {</div>
+<div class="line"><a id="l01009" name="l01009"></a><span class="lineno"> 1009</span>                <span class="keywordflow">if</span> (seed_side_or_face &lt; 0)</div>
+<div class="line"><a id="l01010" name="l01010"></a><span class="lineno"> 1010</span>                    <a class="code hl_function" href="Initialize__Geometry_8cpp.html#acc203b7a1d300ef69ceae5d20f0aacff">KeepOnlyConnectedToBoundary_2D</a>(fg, nx, ny, eight_conn, <span class="keyword">true</span>, -1);</div>
+<div class="line"><a id="l01011" name="l01011"></a><span class="lineno"> 1011</span>                <span class="keywordflow">else</span></div>
+<div class="line"><a id="l01012" name="l01012"></a><span class="lineno"> 1012</span>                    <a class="code hl_function" href="Initialize__Geometry_8cpp.html#acc203b7a1d300ef69ceae5d20f0aacff">KeepOnlyConnectedToBoundary_2D</a>(fg, nx, ny, eight_conn, <span class="keyword">false</span>, seed_side_or_face);</div>
 <div class="line"><a id="l01013" name="l01013"></a><span class="lineno"> 1013</span>            }</div>
 <div class="line"><a id="l01014" name="l01014"></a><span class="lineno"> 1014</span>            <span class="keywordflow">else</span></div>
 <div class="line"><a id="l01015" name="l01015"></a><span class="lineno"> 1015</span>            {</div>
-<div class="line"><a id="l01016" name="l01016"></a><span class="lineno"> 1016</span>                fg[idx] = (<a class="code hl_variable" href="classInitialize__Geometry.html#a27aeeb194755111fc32cab304b089a77">tiffData</a>[k][j][i] == target_label) ? 1 : 0;</div>
-<div class="line"><a id="l01017" name="l01017"></a><span class="lineno"> 1017</span>            }</div>
-<div class="line"><a id="l01018" name="l01018"></a><span class="lineno"> 1018</span>        }</div>
-<div class="line"><a id="l01019" name="l01019"></a><span class="lineno"> 1019</span> </div>
-<div class="line"><a id="l01020" name="l01020"></a><span class="lineno"> 1020</span>        <span class="keywordflow">if</span> (keep_boundary_connected)</div>
-<div class="line"><a id="l01021" name="l01021"></a><span class="lineno"> 1021</span>        {</div>
-<div class="line"><a id="l01022" name="l01022"></a><span class="lineno"> 1022</span>            <span class="keywordflow">if</span> (nz == 1)</div>
-<div class="line"><a id="l01023" name="l01023"></a><span class="lineno"> 1023</span>            {</div>
-<div class="line"><a id="l01024" name="l01024"></a><span class="lineno"> 1024</span>                <span class="keywordflow">if</span> (seed_side_or_face &lt; 0)</div>
-<div class="line"><a id="l01025" name="l01025"></a><span class="lineno"> 1025</span>                    <a class="code hl_function" href="Initialize__Geometry_8cpp.html#acc203b7a1d300ef69ceae5d20f0aacff">KeepOnlyConnectedToBoundary_2D</a>(fg, nx, ny, eight_conn, <span class="keyword">true</span>, -1);</div>
-<div class="line"><a id="l01026" name="l01026"></a><span class="lineno"> 1026</span>                <span class="keywordflow">else</span></div>
-<div class="line"><a id="l01027" name="l01027"></a><span class="lineno"> 1027</span>                    <a class="code hl_function" href="Initialize__Geometry_8cpp.html#acc203b7a1d300ef69ceae5d20f0aacff">KeepOnlyConnectedToBoundary_2D</a>(fg, nx, ny, eight_conn, <span class="keyword">false</span>, seed_side_or_face);</div>
-<div class="line"><a id="l01028" name="l01028"></a><span class="lineno"> 1028</span>            }</div>
-<div class="line"><a id="l01029" name="l01029"></a><span class="lineno"> 1029</span>            <span class="keywordflow">else</span></div>
-<div class="line"><a id="l01030" name="l01030"></a><span class="lineno"> 1030</span>            {</div>
-<div class="line"><a id="l01031" name="l01031"></a><span class="lineno"> 1031</span>                <span class="keywordflow">if</span> (seed_side_or_face &lt; 0)</div>
-<div class="line"><a id="l01032" name="l01032"></a><span class="lineno"> 1032</span>                    <a class="code hl_function" href="Initialize__Geometry_8cpp.html#a8626305623c25e2692534b76786a433d">KeepOnlyConnectedToBoundary_3D</a>(fg, nx, ny, nz, twenty_six, <span class="keyword">true</span>, -1);</div>
-<div class="line"><a id="l01033" name="l01033"></a><span class="lineno"> 1033</span>                <span class="keywordflow">else</span></div>
-<div class="line"><a id="l01034" name="l01034"></a><span class="lineno"> 1034</span>                    <a class="code hl_function" href="Initialize__Geometry_8cpp.html#a8626305623c25e2692534b76786a433d">KeepOnlyConnectedToBoundary_3D</a>(fg, nx, ny, nz, twenty_six, <span class="keyword">false</span>, seed_side_or_face);</div>
-<div class="line"><a id="l01035" name="l01035"></a><span class="lineno"> 1035</span>            }</div>
-<div class="line"><a id="l01036" name="l01036"></a><span class="lineno"> 1036</span>        }</div>
-<div class="line"><a id="l01037" name="l01037"></a><span class="lineno"> 1037</span>    }</div>
+<div class="line"><a id="l01016" name="l01016"></a><span class="lineno"> 1016</span>                <span class="keywordflow">if</span> (seed_side_or_face &lt; 0)</div>
+<div class="line"><a id="l01017" name="l01017"></a><span class="lineno"> 1017</span>                    <a class="code hl_function" href="Initialize__Geometry_8cpp.html#a8626305623c25e2692534b76786a433d">KeepOnlyConnectedToBoundary_3D</a>(fg, nx, ny, nz, twenty_six, <span class="keyword">true</span>, -1);</div>
+<div class="line"><a id="l01018" name="l01018"></a><span class="lineno"> 1018</span>                <span class="keywordflow">else</span></div>
+<div class="line"><a id="l01019" name="l01019"></a><span class="lineno"> 1019</span>                    <a class="code hl_function" href="Initialize__Geometry_8cpp.html#a8626305623c25e2692534b76786a433d">KeepOnlyConnectedToBoundary_3D</a>(fg, nx, ny, nz, twenty_six, <span class="keyword">false</span>, seed_side_or_face);</div>
+<div class="line"><a id="l01020" name="l01020"></a><span class="lineno"> 1020</span>            }</div>
+<div class="line"><a id="l01021" name="l01021"></a><span class="lineno"> 1021</span>        }</div>
+<div class="line"><a id="l01022" name="l01022"></a><span class="lineno"> 1022</span>    }</div>
+<div class="line"><a id="l01023" name="l01023"></a><span class="lineno"> 1023</span> </div>
+<div class="line"><a id="l01024" name="l01024"></a><span class="lineno"> 1024</span>    MPI_Bcast(fg.data(), (<span class="keywordtype">int</span>)fg.size(), MPI_UNSIGNED_CHAR, 0, MPI_COMM_WORLD);</div>
+<div class="line"><a id="l01025" name="l01025"></a><span class="lineno"> 1025</span> </div>
+<div class="line"><a id="l01026" name="l01026"></a><span class="lineno"> 1026</span>    mfem::ParGridFunction ls_coeff_dg(<a class="code hl_variable" href="classInitialize__Geometry.html#a7595f17d99d4aac6d6972115300caa16">parfespace_dg</a>.get());</div>
+<div class="line"><a id="l01027" name="l01027"></a><span class="lineno"> 1027</span>    mfem::ParGridFunction filt_dg(<a class="code hl_variable" href="classInitialize__Geometry.html#a7595f17d99d4aac6d6972115300caa16">parfespace_dg</a>.get());</div>
+<div class="line"><a id="l01028" name="l01028"></a><span class="lineno"> 1028</span> </div>
+<div class="line"><a id="l01029" name="l01029"></a><span class="lineno"> 1029</span>    ls_coeff_dg = 0.0;</div>
+<div class="line"><a id="l01030" name="l01030"></a><span class="lineno"> 1030</span>    filt_dg = 0.0;</div>
+<div class="line"><a id="l01031" name="l01031"></a><span class="lineno"> 1031</span> </div>
+<div class="line"><a id="l01032" name="l01032"></a><span class="lineno"> 1032</span>    <span class="keyword">struct </span>FGCoeffND : <span class="keyword">public</span> mfem::Coefficient</div>
+<div class="line"><a id="l01033" name="l01033"></a><span class="lineno"> 1033</span>    {</div>
+<div class="line"><a id="l01034" name="l01034"></a><span class="lineno"> 1034</span>        <span class="keywordtype">int</span> nx, ny, nz;</div>
+<div class="line"><a id="l01035" name="l01035"></a><span class="lineno"> 1035</span>        <span class="keywordtype">int</span> dim;</div>
+<div class="line"><a id="l01036" name="l01036"></a><span class="lineno"> 1036</span>        <span class="keywordtype">double</span> x0, y0, z0, dxp, dyp, dzp;</div>
+<div class="line"><a id="l01037" name="l01037"></a><span class="lineno"> 1037</span>        <span class="keyword">const</span> std::vector&lt;uint8_t&gt; *fg;</div>
 <div class="line"><a id="l01038" name="l01038"></a><span class="lineno"> 1038</span> </div>
-<div class="line"><a id="l01039" name="l01039"></a><span class="lineno"> 1039</span>    MPI_Bcast(fg.data(), (<span class="keywordtype">int</span>)fg.size(), MPI_UNSIGNED_CHAR, 0, MPI_COMM_WORLD);</div>
-<div class="line"><a id="l01040" name="l01040"></a><span class="lineno"> 1040</span> </div>
-<div class="line"><a id="l01041" name="l01041"></a><span class="lineno"> 1041</span>    mfem::ParGridFunction ls_coeff_dg(<a class="code hl_variable" href="classInitialize__Geometry.html#a7595f17d99d4aac6d6972115300caa16">parfespace_dg</a>.get());</div>
-<div class="line"><a id="l01042" name="l01042"></a><span class="lineno"> 1042</span>    mfem::ParGridFunction filt_dg(<a class="code hl_variable" href="classInitialize__Geometry.html#a7595f17d99d4aac6d6972115300caa16">parfespace_dg</a>.get());</div>
-<div class="line"><a id="l01043" name="l01043"></a><span class="lineno"> 1043</span> </div>
-<div class="line"><a id="l01044" name="l01044"></a><span class="lineno"> 1044</span>    ls_coeff_dg = 0.0;</div>
-<div class="line"><a id="l01045" name="l01045"></a><span class="lineno"> 1045</span>    filt_dg = 0.0;</div>
+<div class="line"><a id="l01039" name="l01039"></a><span class="lineno"> 1039</span>        FGCoeffND(<span class="keywordtype">int</span> nx_, <span class="keywordtype">int</span> ny_, <span class="keywordtype">int</span> nz_, <span class="keywordtype">int</span> dim_,</div>
+<div class="line"><a id="l01040" name="l01040"></a><span class="lineno"> 1040</span>                  <span class="keywordtype">double</span> x0_, <span class="keywordtype">double</span> y0_, <span class="keywordtype">double</span> z0_,</div>
+<div class="line"><a id="l01041" name="l01041"></a><span class="lineno"> 1041</span>                  <span class="keywordtype">double</span> dxp_, <span class="keywordtype">double</span> dyp_, <span class="keywordtype">double</span> dzp_,</div>
+<div class="line"><a id="l01042" name="l01042"></a><span class="lineno"> 1042</span>                  <span class="keyword">const</span> std::vector&lt;uint8_t&gt; *fg_)</div>
+<div class="line"><a id="l01043" name="l01043"></a><span class="lineno"> 1043</span>            : nx(nx_), ny(ny_), nz(nz_), dim(dim_),</div>
+<div class="line"><a id="l01044" name="l01044"></a><span class="lineno"> 1044</span>              x0(x0_), y0(y0_), z0(z0_),</div>
+<div class="line"><a id="l01045" name="l01045"></a><span class="lineno"> 1045</span>              dxp(dxp_), dyp(dyp_), dzp(dzp_), fg(fg_) {}</div>
 <div class="line"><a id="l01046" name="l01046"></a><span class="lineno"> 1046</span> </div>
-<div class="line"><a id="l01047" name="l01047"></a><span class="lineno"> 1047</span>    <span class="keyword">struct </span>FGCoeffND : <span class="keyword">public</span> mfem::Coefficient</div>
-<div class="line"><a id="l01048" name="l01048"></a><span class="lineno"> 1048</span>    {</div>
-<div class="line"><a id="l01049" name="l01049"></a><span class="lineno"> 1049</span>        <span class="keywordtype">int</span> nx, ny, nz;</div>
-<div class="line"><a id="l01050" name="l01050"></a><span class="lineno"> 1050</span>        <span class="keywordtype">int</span> dim;</div>
-<div class="line"><a id="l01051" name="l01051"></a><span class="lineno"> 1051</span>        <span class="keywordtype">double</span> x0, y0, z0, dxp, dyp, dzp;</div>
-<div class="line"><a id="l01052" name="l01052"></a><span class="lineno"> 1052</span>        <span class="keyword">const</span> std::vector&lt;uint8_t&gt; *fg;</div>
-<div class="line"><a id="l01053" name="l01053"></a><span class="lineno"> 1053</span> </div>
-<div class="line"><a id="l01054" name="l01054"></a><span class="lineno"> 1054</span>        FGCoeffND(<span class="keywordtype">int</span> nx_, <span class="keywordtype">int</span> ny_, <span class="keywordtype">int</span> nz_, <span class="keywordtype">int</span> dim_,</div>
-<div class="line"><a id="l01055" name="l01055"></a><span class="lineno"> 1055</span>                  <span class="keywordtype">double</span> x0_, <span class="keywordtype">double</span> y0_, <span class="keywordtype">double</span> z0_,</div>
-<div class="line"><a id="l01056" name="l01056"></a><span class="lineno"> 1056</span>                  <span class="keywordtype">double</span> dxp_, <span class="keywordtype">double</span> dyp_, <span class="keywordtype">double</span> dzp_,</div>
-<div class="line"><a id="l01057" name="l01057"></a><span class="lineno"> 1057</span>                  <span class="keyword">const</span> std::vector&lt;uint8_t&gt; *fg_)</div>
-<div class="line"><a id="l01058" name="l01058"></a><span class="lineno"> 1058</span>            : nx(nx_), ny(ny_), nz(nz_), dim(dim_),</div>
-<div class="line"><a id="l01059" name="l01059"></a><span class="lineno"> 1059</span>              x0(x0_), y0(y0_), z0(z0_),</div>
-<div class="line"><a id="l01060" name="l01060"></a><span class="lineno"> 1060</span>              dxp(dxp_), dyp(dyp_), dzp(dzp_), fg(fg_) {}</div>
+<div class="line"><a id="l01047" name="l01047"></a><span class="lineno"> 1047</span>        <span class="keywordtype">double</span> Eval(mfem::ElementTransformation &amp;T,</div>
+<div class="line"><a id="l01048" name="l01048"></a><span class="lineno"> 1048</span>                    <span class="keyword">const</span> mfem::IntegrationPoint &amp;ip)<span class="keyword"> override</span></div>
+<div class="line"><a id="l01049" name="l01049"></a><span class="lineno"> 1049</span><span class="keyword">        </span>{</div>
+<div class="line"><a id="l01050" name="l01050"></a><span class="lineno"> 1050</span>            mfem::Vector x;</div>
+<div class="line"><a id="l01051" name="l01051"></a><span class="lineno"> 1051</span>            T.Transform(ip, x);</div>
+<div class="line"><a id="l01052" name="l01052"></a><span class="lineno"> 1052</span> </div>
+<div class="line"><a id="l01053" name="l01053"></a><span class="lineno"> 1053</span>            <span class="keywordtype">int</span> i = (int)std::floor((x(0) - x0) / dxp + 0.5);</div>
+<div class="line"><a id="l01054" name="l01054"></a><span class="lineno"> 1054</span>            <span class="keywordtype">int</span> j = (int)std::floor((x(1) - y0) / dyp + 0.5);</div>
+<div class="line"><a id="l01055" name="l01055"></a><span class="lineno"> 1055</span>            <span class="keywordtype">int</span> k = 0;</div>
+<div class="line"><a id="l01056" name="l01056"></a><span class="lineno"> 1056</span>            <span class="keywordflow">if</span> (dim == 3) { k = (int)std::floor((x(2) - z0) / dzp + 0.5); }</div>
+<div class="line"><a id="l01057" name="l01057"></a><span class="lineno"> 1057</span> </div>
+<div class="line"><a id="l01058" name="l01058"></a><span class="lineno"> 1058</span>            i = std::max(0, std::min(nx-1, i));</div>
+<div class="line"><a id="l01059" name="l01059"></a><span class="lineno"> 1059</span>            j = std::max(0, std::min(ny-1, j));</div>
+<div class="line"><a id="l01060" name="l01060"></a><span class="lineno"> 1060</span>            k = std::max(0, std::min(nz-1, k));</div>
 <div class="line"><a id="l01061" name="l01061"></a><span class="lineno"> 1061</span> </div>
-<div class="line"><a id="l01062" name="l01062"></a><span class="lineno"> 1062</span>        <span class="keywordtype">double</span> Eval(mfem::ElementTransformation &amp;T,</div>
-<div class="line"><a id="l01063" name="l01063"></a><span class="lineno"> 1063</span>                    <span class="keyword">const</span> mfem::IntegrationPoint &amp;ip)<span class="keyword"> override</span></div>
-<div class="line"><a id="l01064" name="l01064"></a><span class="lineno"> 1064</span><span class="keyword">        </span>{</div>
-<div class="line"><a id="l01065" name="l01065"></a><span class="lineno"> 1065</span>            mfem::Vector x;</div>
-<div class="line"><a id="l01066" name="l01066"></a><span class="lineno"> 1066</span>            T.Transform(ip, x);</div>
-<div class="line"><a id="l01067" name="l01067"></a><span class="lineno"> 1067</span> </div>
-<div class="line"><a id="l01068" name="l01068"></a><span class="lineno"> 1068</span>            <span class="keywordtype">int</span> i = (int)std::floor((x(0) - x0) / dxp + 0.5);</div>
-<div class="line"><a id="l01069" name="l01069"></a><span class="lineno"> 1069</span>            <span class="keywordtype">int</span> j = (int)std::floor((x(1) - y0) / dyp + 0.5);</div>
-<div class="line"><a id="l01070" name="l01070"></a><span class="lineno"> 1070</span>            <span class="keywordtype">int</span> k = 0;</div>
-<div class="line"><a id="l01071" name="l01071"></a><span class="lineno"> 1071</span>            <span class="keywordflow">if</span> (dim == 3) { k = (int)std::floor((x(2) - z0) / dzp + 0.5); }</div>
-<div class="line"><a id="l01072" name="l01072"></a><span class="lineno"> 1072</span> </div>
-<div class="line"><a id="l01073" name="l01073"></a><span class="lineno"> 1073</span>            i = std::max(0, std::min(nx-1, i));</div>
-<div class="line"><a id="l01074" name="l01074"></a><span class="lineno"> 1074</span>            j = std::max(0, std::min(ny-1, j));</div>
-<div class="line"><a id="l01075" name="l01075"></a><span class="lineno"> 1075</span>            k = std::max(0, std::min(nz-1, k));</div>
-<div class="line"><a id="l01076" name="l01076"></a><span class="lineno"> 1076</span> </div>
-<div class="line"><a id="l01077" name="l01077"></a><span class="lineno"> 1077</span>            <span class="keyword">const</span> <span class="keywordtype">int</span> idx = i + nx*j + nx*ny*k;</div>
-<div class="line"><a id="l01078" name="l01078"></a><span class="lineno"> 1078</span>            <span class="keywordflow">return</span> ((*fg)[idx] &gt; 0) ? 1.0 : -1.0;</div>
-<div class="line"><a id="l01079" name="l01079"></a><span class="lineno"> 1079</span>        }</div>
-<div class="line"><a id="l01080" name="l01080"></a><span class="lineno"> 1080</span>    };</div>
-<div class="line"><a id="l01081" name="l01081"></a><span class="lineno"> 1081</span> </div>
-<div class="line"><a id="l01082" name="l01082"></a><span class="lineno"> 1082</span>    <span class="keyword">const</span> <span class="keywordtype">int</span> dim = <a class="code hl_variable" href="classInitialize__Geometry.html#ac335021b2788680688969e410abd6ca8">parallelMesh</a>-&gt;Dimension();</div>
-<div class="line"><a id="l01083" name="l01083"></a><span class="lineno"> 1083</span>    mfem::Vector bb_min, bb_max;</div>
-<div class="line"><a id="l01084" name="l01084"></a><span class="lineno"> 1084</span>    <a class="code hl_variable" href="classInitialize__Geometry.html#ac335021b2788680688969e410abd6ca8">parallelMesh</a>-&gt;GetBoundingBox(bb_min, bb_max);</div>
+<div class="line"><a id="l01062" name="l01062"></a><span class="lineno"> 1062</span>            <span class="keyword">const</span> <span class="keywordtype">int</span> idx = i + nx*j + nx*ny*k;</div>
+<div class="line"><a id="l01063" name="l01063"></a><span class="lineno"> 1063</span>            <span class="keywordflow">return</span> ((*fg)[idx] &gt; 0) ? 1.0 : -1.0;</div>
+<div class="line"><a id="l01064" name="l01064"></a><span class="lineno"> 1064</span>        }</div>
+<div class="line"><a id="l01065" name="l01065"></a><span class="lineno"> 1065</span>    };</div>
+<div class="line"><a id="l01066" name="l01066"></a><span class="lineno"> 1066</span> </div>
+<div class="line"><a id="l01067" name="l01067"></a><span class="lineno"> 1067</span>    <span class="keyword">const</span> <span class="keywordtype">int</span> dim = <a class="code hl_variable" href="classInitialize__Geometry.html#ac335021b2788680688969e410abd6ca8">parallelMesh</a>-&gt;Dimension();</div>
+<div class="line"><a id="l01068" name="l01068"></a><span class="lineno"> 1068</span>    mfem::Vector bb_min, bb_max;</div>
+<div class="line"><a id="l01069" name="l01069"></a><span class="lineno"> 1069</span>    <a class="code hl_variable" href="classInitialize__Geometry.html#ac335021b2788680688969e410abd6ca8">parallelMesh</a>-&gt;GetBoundingBox(bb_min, bb_max);</div>
+<div class="line"><a id="l01070" name="l01070"></a><span class="lineno"> 1070</span> </div>
+<div class="line"><a id="l01071" name="l01071"></a><span class="lineno"> 1071</span>    <span class="keyword">const</span> <span class="keywordtype">double</span> sx = bb_max(0) - bb_min(0);</div>
+<div class="line"><a id="l01072" name="l01072"></a><span class="lineno"> 1072</span>    <span class="keyword">const</span> <span class="keywordtype">double</span> sy = bb_max(1) - bb_min(1);</div>
+<div class="line"><a id="l01073" name="l01073"></a><span class="lineno"> 1073</span>    <span class="keyword">const</span> <span class="keywordtype">double</span> sz = (dim == 3) ? (bb_max(2) - bb_min(2)) : dx;</div>
+<div class="line"><a id="l01074" name="l01074"></a><span class="lineno"> 1074</span> </div>
+<div class="line"><a id="l01075" name="l01075"></a><span class="lineno"> 1075</span>    <span class="keyword">const</span> <span class="keywordtype">double</span> x0 = bb_min(0);</div>
+<div class="line"><a id="l01076" name="l01076"></a><span class="lineno"> 1076</span>    <span class="keyword">const</span> <span class="keywordtype">double</span> y0 = bb_min(1);</div>
+<div class="line"><a id="l01077" name="l01077"></a><span class="lineno"> 1077</span>    <span class="keyword">const</span> <span class="keywordtype">double</span> z0 = (dim == 3) ? bb_min(2) : 0.0;</div>
+<div class="line"><a id="l01078" name="l01078"></a><span class="lineno"> 1078</span> </div>
+<div class="line"><a id="l01079" name="l01079"></a><span class="lineno"> 1079</span>    <span class="keyword">const</span> <span class="keywordtype">double</span> dxp = (nx &gt; 1) ? sx / (nx - 1) : sx;</div>
+<div class="line"><a id="l01080" name="l01080"></a><span class="lineno"> 1080</span>    <span class="keyword">const</span> <span class="keywordtype">double</span> dyp = (ny &gt; 1) ? sy / (ny - 1) : sy;</div>
+<div class="line"><a id="l01081" name="l01081"></a><span class="lineno"> 1081</span>    <span class="keyword">const</span> <span class="keywordtype">double</span> dzp = (dim == 3 &amp;&amp; nz &gt; 1) ? sz / (nz - 1) : dx;</div>
+<div class="line"><a id="l01082" name="l01082"></a><span class="lineno"> 1082</span> </div>
+<div class="line"><a id="l01083" name="l01083"></a><span class="lineno"> 1083</span>    FGCoeffND fg_coeff(nx, ny, nz, dim, x0, y0, z0, dxp, dyp, dzp, &amp;fg);</div>
+<div class="line"><a id="l01084" name="l01084"></a><span class="lineno"> 1084</span>    ls_coeff_dg.ProjectCoefficient(fg_coeff);</div>
 <div class="line"><a id="l01085" name="l01085"></a><span class="lineno"> 1085</span> </div>
-<div class="line"><a id="l01086" name="l01086"></a><span class="lineno"> 1086</span>    <span class="keyword">const</span> <span class="keywordtype">double</span> sx = bb_max(0) - bb_min(0);</div>
-<div class="line"><a id="l01087" name="l01087"></a><span class="lineno"> 1087</span>    <span class="keyword">const</span> <span class="keywordtype">double</span> sy = bb_max(1) - bb_min(1);</div>
-<div class="line"><a id="l01088" name="l01088"></a><span class="lineno"> 1088</span>    <span class="keyword">const</span> <span class="keywordtype">double</span> sz = (dim == 3) ? (bb_max(2) - bb_min(2)) : dx;</div>
-<div class="line"><a id="l01089" name="l01089"></a><span class="lineno"> 1089</span> </div>
-<div class="line"><a id="l01090" name="l01090"></a><span class="lineno"> 1090</span>    <span class="keyword">const</span> <span class="keywordtype">double</span> x0 = bb_min(0);</div>
-<div class="line"><a id="l01091" name="l01091"></a><span class="lineno"> 1091</span>    <span class="keyword">const</span> <span class="keywordtype">double</span> y0 = bb_min(1);</div>
-<div class="line"><a id="l01092" name="l01092"></a><span class="lineno"> 1092</span>    <span class="keyword">const</span> <span class="keywordtype">double</span> z0 = (dim == 3) ? bb_min(2) : 0.0;</div>
-<div class="line"><a id="l01093" name="l01093"></a><span class="lineno"> 1093</span> </div>
-<div class="line"><a id="l01094" name="l01094"></a><span class="lineno"> 1094</span>    <span class="keyword">const</span> <span class="keywordtype">double</span> dxp = (nx &gt; 1) ? sx / (nx - 1) : sx;</div>
-<div class="line"><a id="l01095" name="l01095"></a><span class="lineno"> 1095</span>    <span class="keyword">const</span> <span class="keywordtype">double</span> dyp = (ny &gt; 1) ? sy / (ny - 1) : sy;</div>
-<div class="line"><a id="l01096" name="l01096"></a><span class="lineno"> 1096</span>    <span class="keyword">const</span> <span class="keywordtype">double</span> dzp = (dim == 3 &amp;&amp; nz &gt; 1) ? sz / (nz - 1) : dx;</div>
+<div class="line"><a id="l01086" name="l01086"></a><span class="lineno"> 1086</span>    <span class="comment">// ------------------ PDEFilter ------------------</span></div>
+<div class="line"><a id="l01087" name="l01087"></a><span class="lineno"> 1087</span>    <span class="keyword">const</span> <span class="keywordtype">double</span> filter_weight = 3 * dx;</div>
+<div class="line"><a id="l01088" name="l01088"></a><span class="lineno"> 1088</span>    mfem::common::PDEFilter filter(*<a class="code hl_variable" href="classInitialize__Geometry.html#ac335021b2788680688969e410abd6ca8">parallelMesh</a>, filter_weight);</div>
+<div class="line"><a id="l01089" name="l01089"></a><span class="lineno"> 1089</span>    filter.Filter(ls_coeff_dg, filt_dg);</div>
+<div class="line"><a id="l01090" name="l01090"></a><span class="lineno"> 1090</span> </div>
+<div class="line"><a id="l01091" name="l01091"></a><span class="lineno"> 1091</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; filt_dg.Size(); i++)</div>
+<div class="line"><a id="l01092" name="l01092"></a><span class="lineno"> 1092</span>    {</div>
+<div class="line"><a id="l01093" name="l01093"></a><span class="lineno"> 1093</span>        filt_dg(i) = 0.5*(filt_dg(i) + 1.0);</div>
+<div class="line"><a id="l01094" name="l01094"></a><span class="lineno"> 1094</span>    }</div>
+<div class="line"><a id="l01095" name="l01095"></a><span class="lineno"> 1095</span> </div>
+<div class="line"><a id="l01096" name="l01096"></a><span class="lineno"> 1096</span>    mfem::GridFunctionCoefficient ls_filt_coeff(&amp;filt_dg);</div>
 <div class="line"><a id="l01097" name="l01097"></a><span class="lineno"> 1097</span> </div>
-<div class="line"><a id="l01098" name="l01098"></a><span class="lineno"> 1098</span>    FGCoeffND fg_coeff(nx, ny, nz, dim, x0, y0, z0, dxp, dyp, dzp, &amp;fg);</div>
-<div class="line"><a id="l01099" name="l01099"></a><span class="lineno"> 1099</span>    ls_coeff_dg.ProjectCoefficient(fg_coeff);</div>
-<div class="line"><a id="l01100" name="l01100"></a><span class="lineno"> 1100</span> </div>
-<div class="line"><a id="l01101" name="l01101"></a><span class="lineno"> 1101</span>    <span class="comment">// ------------------ PDEFilter ------------------</span></div>
-<div class="line"><a id="l01102" name="l01102"></a><span class="lineno"> 1102</span>    <span class="keyword">const</span> <span class="keywordtype">double</span> filter_weight = 3 * dx;</div>
-<div class="line"><a id="l01103" name="l01103"></a><span class="lineno"> 1103</span>    mfem::common::PDEFilter filter(*<a class="code hl_variable" href="classInitialize__Geometry.html#ac335021b2788680688969e410abd6ca8">parallelMesh</a>, filter_weight);</div>
-<div class="line"><a id="l01104" name="l01104"></a><span class="lineno"> 1104</span>    filter.Filter(ls_coeff_dg, filt_dg);</div>
-<div class="line"><a id="l01105" name="l01105"></a><span class="lineno"> 1105</span> </div>
-<div class="line"><a id="l01106" name="l01106"></a><span class="lineno"> 1106</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; filt_dg.Size(); i++)</div>
-<div class="line"><a id="l01107" name="l01107"></a><span class="lineno"> 1107</span>    {</div>
-<div class="line"><a id="l01108" name="l01108"></a><span class="lineno"> 1108</span>        filt_dg(i) = 0.5*(filt_dg(i) + 1.0);</div>
-<div class="line"><a id="l01109" name="l01109"></a><span class="lineno"> 1109</span>    }</div>
-<div class="line"><a id="l01110" name="l01110"></a><span class="lineno"> 1110</span> </div>
-<div class="line"><a id="l01111" name="l01111"></a><span class="lineno"> 1111</span>    mfem::GridFunctionCoefficient ls_filt_coeff(&amp;filt_dg);</div>
-<div class="line"><a id="l01112" name="l01112"></a><span class="lineno"> 1112</span> </div>
-<div class="line"><a id="l01113" name="l01113"></a><span class="lineno"> 1113</span>    filt_gf.ProjectGridFunction(filt_dg);</div>
-<div class="line"><a id="l01114" name="l01114"></a><span class="lineno"> 1114</span>}</div>
+<div class="line"><a id="l01098" name="l01098"></a><span class="lineno"> 1098</span>    filt_gf.ProjectGridFunction(filt_dg);</div>
+<div class="line"><a id="l01099" name="l01099"></a><span class="lineno"> 1099</span>}</div>
 <div class="ttc" id="aInitialize__Geometry_8cpp_html_a8626305623c25e2692534b76786a433d"><div class="ttname"><a href="Initialize__Geometry_8cpp.html#a8626305623c25e2692534b76786a433d">KeepOnlyConnectedToBoundary_3D</a></div><div class="ttdeci">static void KeepOnlyConnectedToBoundary_3D(std::vector&lt; uint8_t &gt; &amp;solid, int nx, int ny, int nz, bool twenty_six_conn, bool seed_all_boundaries=true, int seed_face=-1)</div><div class="ttdef"><b>Definition</b> <a href="Initialize__Geometry_8cpp_source.html#l00079">Initialize_Geometry.cpp:79</a></div></div>
 <div class="ttc" id="aInitialize__Geometry_8cpp_html_acc203b7a1d300ef69ceae5d20f0aacff"><div class="ttname"><a href="Initialize__Geometry_8cpp.html#acc203b7a1d300ef69ceae5d20f0aacff">KeepOnlyConnectedToBoundary_2D</a></div><div class="ttdeci">static void KeepOnlyConnectedToBoundary_2D(std::vector&lt; uint8_t &gt; &amp;solid, int nx, int ny, bool eight_conn, bool seed_all_boundaries=true, int seed_side=-1)</div><div class="ttdef"><b>Definition</b> <a href="Initialize__Geometry_8cpp_source.html#l00030">Initialize_Geometry.cpp:30</a></div></div>
 <div class="ttc" id="aclassInitialize__Geometry_html_a020d9c2865b31144eb1fb3fa8737d103"><div class="ttname"><a href="classInitialize__Geometry.html#a020d9c2865b31144eb1fb3fa8737d103">Initialize_Geometry::nV</a></div><div class="ttdeci">int nV</div><div class="ttdoc">Number of vertices.</div><div class="ttdef"><b>Definition</b> <a href="Initialize__Geometry_8hpp_source.html#l00280">Initialize_Geometry.hpp:280</a></div></div>
@@ -1200,7 +1185,7 @@ $(function() {
 <div class="ttc" id="aclassInitialize__Geometry_html_a0a8d595f0c60f5da5e55fc9fe4a09f93"><div class="ttname"><a href="classInitialize__Geometry.html#a0a8d595f0c60f5da5e55fc9fe4a09f93">Initialize_Geometry::gDsF_C</a></div><div class="ttdeci">std::unique_ptr&lt; mfem::GridFunction &gt; gDsF_C</div><div class="ttdoc">Global anode/cathode distance fields.</div><div class="ttdef"><b>Definition</b> <a href="Initialize__Geometry_8hpp_source.html#l00328">Initialize_Geometry.hpp:328</a></div></div>
 <div class="ttc" id="aclassInitialize__Geometry_html_a0d72e4f0f70a862176ecb11398f4d827"><div class="ttname"><a href="classInitialize__Geometry.html#a0d72e4f0f70a862176ecb11398f4d827">Initialize_Geometry::particle_labels</a></div><div class="ttdeci">std::vector&lt; int &gt; particle_labels</div><div class="ttdoc">Unique particle/material labels from the TIFF geometry.</div><div class="ttdef"><b>Definition</b> <a href="Initialize__Geometry_8hpp_source.html#l00344">Initialize_Geometry.hpp:344</a></div></div>
 <div class="ttc" id="aclassInitialize__Geometry_html_a19d24a35360c657605f8e00eb3d869f6"><div class="ttname"><a href="classInitialize__Geometry.html#a19d24a35360c657605f8e00eb3d869f6">Initialize_Geometry::gDsF</a></div><div class="ttdeci">std::unique_ptr&lt; mfem::GridFunction &gt; gDsF</div><div class="ttdoc">Global serial distance field.</div><div class="ttdef"><b>Definition</b> <a href="Initialize__Geometry_8hpp_source.html#l00325">Initialize_Geometry.hpp:325</a></div></div>
-<div class="ttc" id="aclassInitialize__Geometry_html_a1aa876d4ae89b6c6e6f03091168a85f7"><div class="ttname"><a href="classInitialize__Geometry.html#a1aa876d4ae89b6c6e6f03091168a85f7">Initialize_Geometry::ComputePDEFilterLabel</a></div><div class="ttdeci">void ComputePDEFilterLabel(mfem::ParGridFunction &amp;dist, mfem::ParGridFunction &amp;filt_gf, int target_label, bool keep_boundary_connected, int seed_side_or_face=-1)</div><div class="ttdoc">Compute a filtered distance field for a specific voxel label.</div><div class="ttdef"><b>Definition</b> <a href="Initialize__Geometry_8cpp_source.html#l00974">Initialize_Geometry.cpp:974</a></div></div>
+<div class="ttc" id="aclassInitialize__Geometry_html_a1aa876d4ae89b6c6e6f03091168a85f7"><div class="ttname"><a href="classInitialize__Geometry.html#a1aa876d4ae89b6c6e6f03091168a85f7">Initialize_Geometry::ComputePDEFilterLabel</a></div><div class="ttdeci">void ComputePDEFilterLabel(mfem::ParGridFunction &amp;dist, mfem::ParGridFunction &amp;filt_gf, int target_label, bool keep_boundary_connected, int seed_side_or_face=-1)</div><div class="ttdoc">Compute a filtered distance field for a specific voxel label.</div><div class="ttdef"><b>Definition</b> <a href="Initialize__Geometry_8cpp_source.html#l00959">Initialize_Geometry.cpp:959</a></div></div>
 <div class="ttc" id="aclassInitialize__Geometry_html_a20b4b051ff0a243a7b7ee55d357cf19e"><div class="ttname"><a href="classInitialize__Geometry.html#a20b4b051ff0a243a7b7ee55d357cf19e">Initialize_Geometry::pfec</a></div><div class="ttdeci">std::unique_ptr&lt; mfem::H1_FECollection &gt; pfec</div><div class="ttdoc">Serial/parallel H1 finite element collections.</div><div class="ttdef"><b>Definition</b> <a href="Initialize__Geometry_8hpp_source.html#l00336">Initialize_Geometry.hpp:336</a></div></div>
 <div class="ttc" id="aclassInitialize__Geometry_html_a22edb1192756159b467abf1a5932c96d"><div class="ttname"><a href="classInitialize__Geometry.html#a22edb1192756159b467abf1a5932c96d">Initialize_Geometry::globalMesh</a></div><div class="ttdeci">std::unique_ptr&lt; mfem::Mesh &gt; globalMesh</div><div class="ttdoc">Global serial mesh.</div><div class="ttdef"><b>Definition</b> <a href="Initialize__Geometry_8hpp_source.html#l00297">Initialize_Geometry.hpp:297</a></div></div>
 <div class="ttc" id="aclassInitialize__Geometry_html_a24938d70776f3b575f15e3fb0dedfcc8"><div class="ttname"><a href="classInitialize__Geometry.html#a24938d70776f3b575f15e3fb0dedfcc8">Initialize_Geometry::dsF_A</a></div><div class="ttdeci">std::unique_ptr&lt; mfem::ParGridFunction &gt; dsF_A</div><div class="ttdef"><b>Definition</b> <a href="Initialize__Geometry_8hpp_source.html#l00329">Initialize_Geometry.hpp:329</a></div></div>
@@ -1213,7 +1198,7 @@ $(function() {
 <div class="ttc" id="aclassInitialize__Geometry_html_a70201066308233aa81c5f37e08afd23e"><div class="ttname"><a href="classInitialize__Geometry.html#a70201066308233aa81c5f37e08afd23e">Initialize_Geometry::data</a></div><div class="ttdeci">std::vector&lt; std::vector&lt; std::vector&lt; int &gt; &gt; &gt; data</div><div class="ttdoc">Raw voxel data container.</div><div class="ttdef"><b>Definition</b> <a href="Initialize__Geometry_8hpp_source.html#l00043">Initialize_Geometry.hpp:43</a></div></div>
 <div class="ttc" id="aclassInitialize__Geometry_html_a707a0a1e847aa4840aec76854627d03e"><div class="ttname"><a href="classInitialize__Geometry.html#a707a0a1e847aa4840aec76854627d03e">Initialize_Geometry::E_L2G</a></div><div class="ttdeci">mfem::Array&lt; HYPRE_BigInt &gt; E_L2G</div><div class="ttdoc">Local-to-global element mapping.</div><div class="ttdef"><b>Definition</b> <a href="Initialize__Geometry_8hpp_source.html#l00298">Initialize_Geometry.hpp:298</a></div></div>
 <div class="ttc" id="aclassInitialize__Geometry_html_a7595f17d99d4aac6d6972115300caa16"><div class="ttname"><a href="classInitialize__Geometry.html#a7595f17d99d4aac6d6972115300caa16">Initialize_Geometry::parfespace_dg</a></div><div class="ttdeci">std::shared_ptr&lt; mfem::ParFiniteElementSpace &gt; parfespace_dg</div><div class="ttdoc">Parallel DG finite element space.</div><div class="ttdef"><b>Definition</b> <a href="Initialize__Geometry_8hpp_source.html#l00322">Initialize_Geometry.hpp:322</a></div></div>
-<div class="ttc" id="aclassInitialize__Geometry_html_a76eec0a2d9e1667ea3d0cfb6320fff9f"><div class="ttname"><a href="classInitialize__Geometry.html#a76eec0a2d9e1667ea3d0cfb6320fff9f">Initialize_Geometry::SaveTiffDataToPGM</a></div><div class="ttdeci">void SaveTiffDataToPGM(const std::vector&lt; std::vector&lt; std::vector&lt; int &gt; &gt; &gt; &amp;data, const std::string &amp;filename)</div><div class="ttdoc">Save TIFF voxel data to a series of PGM files.</div><div class="ttdef"><b>Definition</b> <a href="Initialize__Geometry_8cpp_source.html#l00764">Initialize_Geometry.cpp:764</a></div></div>
+<div class="ttc" id="aclassInitialize__Geometry_html_a76eec0a2d9e1667ea3d0cfb6320fff9f"><div class="ttname"><a href="classInitialize__Geometry.html#a76eec0a2d9e1667ea3d0cfb6320fff9f">Initialize_Geometry::SaveTiffDataToPGM</a></div><div class="ttdeci">void SaveTiffDataToPGM(const std::vector&lt; std::vector&lt; std::vector&lt; int &gt; &gt; &gt; &amp;data, const std::string &amp;filename)</div><div class="ttdoc">Save TIFF voxel data to a series of PGM files.</div><div class="ttdef"><b>Definition</b> <a href="Initialize__Geometry_8cpp_source.html#l00749">Initialize_Geometry.cpp:749</a></div></div>
 <div class="ttc" id="aclassInitialize__Geometry_html_a78cc60baa3b6488472d4eab2d70840da"><div class="ttname"><a href="classInitialize__Geometry.html#a78cc60baa3b6488472d4eab2d70840da">Initialize_Geometry::~Initialize_Geometry</a></div><div class="ttdeci">virtual ~Initialize_Geometry()</div><div class="ttdoc">Destructor.</div><div class="ttdef"><b>Definition</b> <a href="Initialize__Geometry_8cpp_source.html#l00024">Initialize_Geometry.cpp:24</a></div></div>
 <div class="ttc" id="aclassInitialize__Geometry_html_a78fe53721a18295a3f99c6b85d5ed23c"><div class="ttname"><a href="classInitialize__Geometry.html#a78fe53721a18295a3f99c6b85d5ed23c">Initialize_Geometry::pfec_dg</a></div><div class="ttdeci">std::unique_ptr&lt; mfem::DG_FECollection &gt; pfec_dg</div><div class="ttdoc">Parallel DG finite element collection.</div><div class="ttdef"><b>Definition</b> <a href="Initialize__Geometry_8hpp_source.html#l00337">Initialize_Geometry.hpp:337</a></div></div>
 <div class="ttc" id="aclassInitialize__Geometry_html_a84e26f7b8cea3356d96516172e75fd93"><div class="ttname"><a href="classInitialize__Geometry.html#a84e26f7b8cea3356d96516172e75fd93">Initialize_Geometry::GetParticleLabelsFromTiff</a></div><div class="ttdeci">std::vector&lt; int &gt; GetParticleLabelsFromTiff() const</div><div class="ttdoc">Return the unique particle/material labels found in the TIFF data.</div><div class="ttdef"><b>Definition</b> <a href="Initialize__Geometry_8cpp_source.html#l00282">Initialize_Geometry.cpp:282</a></div></div>
@@ -1222,7 +1207,7 @@ $(function() {
 <div class="ttc" id="aclassInitialize__Geometry_html_a8f541c47b52d2b94c1a8fbbe2bc118d0"><div class="ttname"><a href="classInitialize__Geometry.html#a8f541c47b52d2b94c1a8fbbe2bc118d0">Initialize_Geometry::InitializeGlobalMesh</a></div><div class="ttdeci">void InitializeGlobalMesh(const char *meshFile)</div><div class="ttdoc">Load and construct global serial MFEM mesh.</div><div class="ttdef"><b>Definition</b> <a href="Initialize__Geometry_8cpp_source.html#l00364">Initialize_Geometry.cpp:364</a></div></div>
 <div class="ttc" id="aclassInitialize__Geometry_html_a8f68dec14cfb02047d40ce736f0730aa"><div class="ttname"><a href="classInitialize__Geometry.html#a8f68dec14cfb02047d40ce736f0730aa">Initialize_Geometry::nC</a></div><div class="ttdeci">int nC</div><div class="ttdoc">Corners per element.</div><div class="ttdef"><b>Definition</b> <a href="Initialize__Geometry_8hpp_source.html#l00282">Initialize_Geometry.hpp:282</a></div></div>
 <div class="ttc" id="aclassInitialize__Geometry_html_a8fc99a2a4fde259dba537a484b7e3ead"><div class="ttname"><a href="classInitialize__Geometry.html#a8fc99a2a4fde259dba537a484b7e3ead">Initialize_Geometry::ReadTiffFile</a></div><div class="ttdeci">std::vector&lt; std::vector&lt; std::vector&lt; int &gt; &gt; &gt; ReadTiffFile(const char *meshFile)</div><div class="ttdoc">Read TIFF voxel data for voxel-mesh construction.</div><div class="ttdef"><b>Definition</b> <a href="Initialize__Geometry_8cpp_source.html#l00630">Initialize_Geometry.cpp:630</a></div></div>
-<div class="ttc" id="aclassInitialize__Geometry_html_a91d68314ac32fc21d8e609f7f7d1ded3"><div class="ttname"><a href="classInitialize__Geometry.html#a91d68314ac32fc21d8e609f7f7d1ded3">Initialize_Geometry::CreateGlobalMeshFromTiffData</a></div><div class="ttdeci">std::unique_ptr&lt; mfem::Mesh &gt; CreateGlobalMeshFromTiffData(const std::vector&lt; std::vector&lt; std::vector&lt; int &gt; &gt; &gt; &amp;tiffData)</div><div class="ttdoc">Construct global mesh from voxelized TIFF data.</div><div class="ttdef"><b>Definition</b> <a href="Initialize__Geometry_8cpp_source.html#l00668">Initialize_Geometry.cpp:668</a></div></div>
+<div class="ttc" id="aclassInitialize__Geometry_html_a91d68314ac32fc21d8e609f7f7d1ded3"><div class="ttname"><a href="classInitialize__Geometry.html#a91d68314ac32fc21d8e609f7f7d1ded3">Initialize_Geometry::CreateGlobalMeshFromTiffData</a></div><div class="ttdeci">std::unique_ptr&lt; mfem::Mesh &gt; CreateGlobalMeshFromTiffData(const std::vector&lt; std::vector&lt; std::vector&lt; int &gt; &gt; &gt; &amp;tiffData)</div><div class="ttdoc">Construct global mesh from voxelized TIFF data.</div><div class="ttdef"><b>Definition</b> <a href="Initialize__Geometry_8cpp_source.html#l00653">Initialize_Geometry.cpp:653</a></div></div>
 <div class="ttc" id="aclassInitialize__Geometry_html_a928aea377d5f13e7e9a72e9c766363e9"><div class="ttname"><a href="classInitialize__Geometry.html#a928aea377d5f13e7e9a72e9c766363e9">Initialize_Geometry::VTX</a></div><div class="ttdeci">mfem::Array&lt; int &gt; VTX</div><div class="ttdoc">Local vertex IDs of current element.</div><div class="ttdef"><b>Definition</b> <a href="Initialize__Geometry_8hpp_source.html#l00295">Initialize_Geometry.hpp:295</a></div></div>
 <div class="ttc" id="aclassInitialize__Geometry_html_a9bb3c9ea9d89bbb2c9962ecafaa14c51"><div class="ttname"><a href="classInitialize__Geometry.html#a9bb3c9ea9d89bbb2c9962ecafaa14c51">Initialize_Geometry::AssignGlobalValues</a></div><div class="ttdeci">void AssignGlobalValues(const char *mesh_file, const char *distanceFile, std::unique_ptr&lt; mfem::GridFunction &gt; &amp;gDsF_out)</div><div class="ttdoc">Assign global fields: distance functions, voxel mask, etc.</div><div class="ttdef"><b>Definition</b> <a href="Initialize__Geometry_8cpp_source.html#l00437">Initialize_Geometry.cpp:437</a></div></div>
 <div class="ttc" id="aclassInitialize__Geometry_html_aa25297c6da9c4510dfc0a9a62cefbaf8"><div class="ttname"><a href="classInitialize__Geometry.html#aa25297c6da9c4510dfc0a9a62cefbaf8">Initialize_Geometry::Vox</a></div><div class="ttdeci">std::unique_ptr&lt; mfem::ParGridFunction &gt; Vox</div><div class="ttdoc">Parallel voxel-label field.</div><div class="ttdef"><b>Definition</b> <a href="Initialize__Geometry_8hpp_source.html#l00332">Initialize_Geometry.hpp:332</a></div></div>
@@ -1235,7 +1220,7 @@ $(function() {
 <div class="ttc" id="aclassInitialize__Geometry_html_ac335021b2788680688969e410abd6ca8"><div class="ttname"><a href="classInitialize__Geometry.html#ac335021b2788680688969e410abd6ca8">Initialize_Geometry::parallelMesh</a></div><div class="ttdeci">std::shared_ptr&lt; mfem::ParMesh &gt; parallelMesh</div><div class="ttdoc">Distributed parallel mesh.</div><div class="ttdef"><b>Definition</b> <a href="Initialize__Geometry_8hpp_source.html#l00316">Initialize_Geometry.hpp:316</a></div></div>
 <div class="ttc" id="aclassInitialize__Geometry_html_ace7808588f888af81e9e61b0c4e0c075"><div class="ttname"><a href="classInitialize__Geometry.html#ace7808588f888af81e9e61b0c4e0c075">Initialize_Geometry::InitializeMesh</a></div><div class="ttdeci">void InitializeMesh(const char *meshFile, const char *distanceFile, const char *mesh_type, MPI_Comm comm, int order)</div><div class="ttdoc">Initialize mesh and distance fields for a half-cell simulation.</div><div class="ttdef"><b>Definition</b> <a href="Initialize__Geometry_8cpp_source.html#l00153">Initialize_Geometry.cpp:153</a></div></div>
 <div class="ttc" id="aclassInitialize__Geometry_html_ad3813c6242a3f4ed5d55321952a539c1"><div class="ttname"><a href="classInitialize__Geometry.html#ad3813c6242a3f4ed5d55321952a539c1">Initialize_Geometry::gVox</a></div><div class="ttdeci">std::unique_ptr&lt; mfem::GridFunction &gt; gVox</div><div class="ttdoc">Global voxel-label field.</div><div class="ttdef"><b>Definition</b> <a href="Initialize__Geometry_8hpp_source.html#l00331">Initialize_Geometry.hpp:331</a></div></div>
-<div class="ttc" id="aclassInitialize__Geometry_html_ad9bd0196a8d84cd6e67a1014bed359fa"><div class="ttname"><a href="classInitialize__Geometry.html#ad9bd0196a8d84cd6e67a1014bed359fa">Initialize_Geometry::ComputePDEFilter</a></div><div class="ttdeci">void ComputePDEFilter(mfem::ParGridFunction &amp;dist, mfem::ParGridFunction &amp;filt_gf, int mode)</div><div class="ttdoc">Use MFEM-based solvers to compute distance function from voxel mask.</div><div class="ttdef"><b>Definition</b> <a href="Initialize__Geometry_8cpp_source.html#l00816">Initialize_Geometry.cpp:816</a></div></div>
+<div class="ttc" id="aclassInitialize__Geometry_html_ad9bd0196a8d84cd6e67a1014bed359fa"><div class="ttname"><a href="classInitialize__Geometry.html#ad9bd0196a8d84cd6e67a1014bed359fa">Initialize_Geometry::ComputePDEFilter</a></div><div class="ttdeci">void ComputePDEFilter(mfem::ParGridFunction &amp;dist, mfem::ParGridFunction &amp;filt_gf, int mode)</div><div class="ttdoc">Use MFEM-based solvers to compute distance function from voxel mask.</div><div class="ttdef"><b>Definition</b> <a href="Initialize__Geometry_8cpp_source.html#l00801">Initialize_Geometry.cpp:801</a></div></div>
 <div class="ttc" id="aclassInitialize__Geometry_html_adef9cefc0afca6d5d725c65b10ff6fcd"><div class="ttname"><a href="classInitialize__Geometry.html#adef9cefc0afca6d5d725c65b10ff6fcd">Initialize_Geometry::gei</a></div><div class="ttdeci">int gei</div><div class="ttdoc">Global element index.</div><div class="ttdef"><b>Definition</b> <a href="Initialize__Geometry_8hpp_source.html#l00284">Initialize_Geometry.hpp:284</a></div></div>
 <div class="ttc" id="aclassInitialize__Geometry_html_adefbf0c4095c7e17877cc13bbb9f0333"><div class="ttname"><a href="classInitialize__Geometry.html#adefbf0c4095c7e17877cc13bbb9f0333">Initialize_Geometry::myid</a></div><div class="ttdeci">int myid</div><div class="ttdoc">MPI rank.</div><div class="ttdef"><b>Definition</b> <a href="Initialize__Geometry_8hpp_source.html#l00313">Initialize_Geometry.hpp:313</a></div></div>
 <div class="ttc" id="aclassInitialize__Geometry_html_aec4d6c4f31304a3284db8a39086ff0b0"><div class="ttname"><a href="classInitialize__Geometry.html#aec4d6c4f31304a3284db8a39086ff0b0">Initialize_Geometry::cfg</a></div><div class="ttdeci">const SimulationConfig &amp; cfg</div><div class="ttdef"><b>Definition</b> <a href="Initialize__Geometry_8hpp_source.html#l00038">Initialize_Geometry.hpp:38</a></div></div>
@@ -1245,24 +1230,21 @@ $(function() {
 <div class="ttc" id="aclassInitialize__Geometry_html_af12ace4e62ffb664ba8bd2be5c61e19c"><div class="ttname"><a href="classInitialize__Geometry.html#af12ace4e62ffb664ba8bd2be5c61e19c">Initialize_Geometry::MaskFilterPse</a></div><div class="ttdeci">std::unique_ptr&lt; mfem::ParGridFunction &gt; MaskFilterPse</div><div class="ttdoc">Filtered electrolyte-mask level-set field.</div><div class="ttdef"><b>Definition</b> <a href="Initialize__Geometry_8hpp_source.html#l00342">Initialize_Geometry.hpp:342</a></div></div>
 <div class="ttc" id="aclassInitialize__Geometry_html_af1d9e8b7d00e9be28c017bcfd1d22eed"><div class="ttname"><a href="classInitialize__Geometry.html#af1d9e8b7d00e9be28c017bcfd1d22eed">Initialize_Geometry::gfec</a></div><div class="ttdeci">std::unique_ptr&lt; mfem::H1_FECollection &gt; gfec</div><div class="ttdef"><b>Definition</b> <a href="Initialize__Geometry_8hpp_source.html#l00336">Initialize_Geometry.hpp:336</a></div></div>
 <div class="ttc" id="aclassInitialize__Geometry_html_af2fabf2a9c839f123f78f78e508af2d1"><div class="ttname"><a href="classInitialize__Geometry.html#af2fabf2a9c839f123f78f78e508af2d1">Initialize_Geometry::distMaskSigned</a></div><div class="ttdeci">std::unique_ptr&lt; mfem::ParGridFunction &gt; distMaskSigned</div><div class="ttdoc">Optional signed distance-to-mask field.</div><div class="ttdef"><b>Definition</b> <a href="Initialize__Geometry_8hpp_source.html#l00340">Initialize_Geometry.hpp:340</a></div></div>
-<div class="ttc" id="aclassInitialize__Geometry_html_af6be6115da2201ececfda40cb1ee7796"><div class="ttname"><a href="classInitialize__Geometry.html#af6be6115da2201ececfda40cb1ee7796">Initialize_Geometry::PrintMeshInfo</a></div><div class="ttdeci">void PrintMeshInfo()</div><div class="ttdoc">Print mesh information (elements, vertices, dimensions).</div><div class="ttdef"><b>Definition</b> <a href="Initialize__Geometry_8cpp_source.html#l00718">Initialize_Geometry.cpp:718</a></div></div>
+<div class="ttc" id="aclassInitialize__Geometry_html_af6be6115da2201ececfda40cb1ee7796"><div class="ttname"><a href="classInitialize__Geometry.html#af6be6115da2201ececfda40cb1ee7796">Initialize_Geometry::PrintMeshInfo</a></div><div class="ttdeci">void PrintMeshInfo()</div><div class="ttdoc">Print mesh information (elements, vertices, dimensions).</div><div class="ttdef"><b>Definition</b> <a href="Initialize__Geometry_8cpp_source.html#l00703">Initialize_Geometry.cpp:703</a></div></div>
 <div class="ttc" id="aclassInitialize__Geometry_html_afbce7eabe0211f7b04c8c1daffb7afa0"><div class="ttname"><a href="classInitialize__Geometry.html#afbce7eabe0211f7b04c8c1daffb7afa0">Initialize_Geometry::InitializeParallelMesh</a></div><div class="ttdeci">void InitializeParallelMesh(MPI_Comm comm)</div><div class="ttdoc">Build a distributed (parallel) mesh from the global mesh.</div><div class="ttdef"><b>Definition</b> <a href="Initialize__Geometry_8cpp_source.html#l00403">Initialize_Geometry.cpp:403</a></div></div>
-<div class="ttc" id="aclassTIFFReader_html"><div class="ttname"><a href="classTIFFReader.html">TIFFReader</a></div><div class="ttdef"><b>Definition</b> <a href="readtiff_8h_source.html#l00012">readtiff.h:12</a></div></div>
-<div class="ttc" id="aclassTIFFReader_html_a1e5238de99bff4b595a6dbb548712d35"><div class="ttname"><a href="classTIFFReader.html#a1e5238de99bff4b595a6dbb548712d35">TIFFReader::getNumParticleLabel</a></div><div class="ttdeci">int getNumParticleLabel() const</div><div class="ttdef"><b>Definition</b> <a href="readtiff_8cpp_source.html#l00197">readtiff.cpp:197</a></div></div>
+<div class="ttc" id="aclassTIFFReader_html"><div class="ttname"><a href="classTIFFReader.html">TIFFReader</a></div><div class="ttdef"><b>Definition</b> <a href="readtiff_8h_source.html#l00011">readtiff.h:11</a></div></div>
 <div class="ttc" id="aclassTIFFReader_html_a7bc33410bd535869a40d1b577b1e1866"><div class="ttname"><a href="classTIFFReader.html#a7bc33410bd535869a40d1b577b1e1866">TIFFReader::readinfo</a></div><div class="ttdeci">void readinfo()</div><div class="ttdef"><b>Definition</b> <a href="readtiff_8cpp_source.html#l00035">readtiff.cpp:35</a></div></div>
-<div class="ttc" id="aclassTIFFReader_html_a8f158fc798c7966aa45ee0428ff193e2"><div class="ttname"><a href="classTIFFReader.html#a8f158fc798c7966aa45ee0428ff193e2">TIFFReader::getImageData</a></div><div class="ttdeci">std::vector&lt; std::vector&lt; std::vector&lt; int &gt; &gt; &gt; getImageData()</div><div class="ttdef"><b>Definition</b> <a href="readtiff_8cpp_source.html#l00264">readtiff.cpp:264</a></div></div>
+<div class="ttc" id="aclassTIFFReader_html_a8f158fc798c7966aa45ee0428ff193e2"><div class="ttname"><a href="classTIFFReader.html#a8f158fc798c7966aa45ee0428ff193e2">TIFFReader::getImageData</a></div><div class="ttdeci">std::vector&lt; std::vector&lt; std::vector&lt; int &gt; &gt; &gt; getImageData()</div><div class="ttdef"><b>Definition</b> <a href="readtiff_8cpp_source.html#l00273">readtiff.cpp:273</a></div></div>
 <div class="ttc" id="anamespacesim_html_a9a5cda33a3beb50f0ee8f4b691ab887a"><div class="ttname"><a href="namespacesim.html#a9a5cda33a3beb50f0ee8f4b691ab887a">sim::Electrode</a></div><div class="ttdeci">Electrode</div><div class="ttdoc">Identifies which electrode is active in a simulation.</div><div class="ttdef"><b>Definition</b> <a href="SimTypes_8hpp_source.html#l00035">SimTypes.hpp:35</a></div></div>
 <div class="ttc" id="anamespacesim_html_ac5b6755057be2032b4017b73313d4a9c"><div class="ttname"><a href="namespacesim.html#ac5b6755057be2032b4017b73313d4a9c">sim::CellMode</a></div><div class="ttdeci">CellMode</div><div class="ttdoc">Specifies whether the simulation is a half-cell or full-cell.</div><div class="ttdef"><b>Definition</b> <a href="SimTypes_8hpp_source.html#l00022">SimTypes.hpp:22</a></div></div>
-<div class="ttc" id="astructConstraints_html"><div class="ttname"><a href="structConstraints.html">Constraints</a></div><div class="ttdef"><b>Definition</b> <a href="readtiff_8h_source.html#l00006">readtiff.h:6</a></div></div>
-<div class="ttc" id="astructConstraints_html_a2a6217a3bc2ffe6fd0725c323c9af169"><div class="ttname"><a href="structConstraints.html#a2a6217a3bc2ffe6fd0725c323c9af169">Constraints::Row_begin</a></div><div class="ttdeci">int Row_begin</div><div class="ttdef"><b>Definition</b> <a href="readtiff_8h_source.html#l00007">readtiff.h:7</a></div></div>
-<div class="ttc" id="astructConstraints_html_a3045ffc77f43b8bbc5870f68a6d21519"><div class="ttname"><a href="structConstraints.html#a3045ffc77f43b8bbc5870f68a6d21519">Constraints::Row_end</a></div><div class="ttdeci">int Row_end</div><div class="ttdef"><b>Definition</b> <a href="readtiff_8h_source.html#l00007">readtiff.h:7</a></div></div>
-<div class="ttc" id="astructConstraints_html_a52bd10f95236f1c811953cdd15b1dd69"><div class="ttname"><a href="structConstraints.html#a52bd10f95236f1c811953cdd15b1dd69">Constraints::Depth_end</a></div><div class="ttdeci">int Depth_end</div><div class="ttdef"><b>Definition</b> <a href="readtiff_8h_source.html#l00007">readtiff.h:7</a></div></div>
-<div class="ttc" id="astructConstraints_html_a93f4a563293f4a91041b225b02124ebd"><div class="ttname"><a href="structConstraints.html#a93f4a563293f4a91041b225b02124ebd">Constraints::Column_begin</a></div><div class="ttdeci">int Column_begin</div><div class="ttdef"><b>Definition</b> <a href="readtiff_8h_source.html#l00007">readtiff.h:7</a></div></div>
-<div class="ttc" id="astructConstraints_html_abd52bc14151f0c215d0916f645baa3ca"><div class="ttname"><a href="structConstraints.html#abd52bc14151f0c215d0916f645baa3ca">Constraints::Depth_begin</a></div><div class="ttdeci">int Depth_begin</div><div class="ttdef"><b>Definition</b> <a href="readtiff_8h_source.html#l00007">readtiff.h:7</a></div></div>
-<div class="ttc" id="astructConstraints_html_abe46b09f46e5ba27c2aaee5704c9b535"><div class="ttname"><a href="structConstraints.html#abe46b09f46e5ba27c2aaee5704c9b535">Constraints::Column_end</a></div><div class="ttdeci">int Column_end</div><div class="ttdef"><b>Definition</b> <a href="readtiff_8h_source.html#l00007">readtiff.h:7</a></div></div>
+<div class="ttc" id="astructConstraints_html"><div class="ttname"><a href="structConstraints.html">Constraints</a></div><div class="ttdef"><b>Definition</b> <a href="readtiff_8h_source.html#l00005">readtiff.h:5</a></div></div>
+<div class="ttc" id="astructConstraints_html_a2a6217a3bc2ffe6fd0725c323c9af169"><div class="ttname"><a href="structConstraints.html#a2a6217a3bc2ffe6fd0725c323c9af169">Constraints::Row_begin</a></div><div class="ttdeci">int Row_begin</div><div class="ttdef"><b>Definition</b> <a href="readtiff_8h_source.html#l00006">readtiff.h:6</a></div></div>
+<div class="ttc" id="astructConstraints_html_a3045ffc77f43b8bbc5870f68a6d21519"><div class="ttname"><a href="structConstraints.html#a3045ffc77f43b8bbc5870f68a6d21519">Constraints::Row_end</a></div><div class="ttdeci">int Row_end</div><div class="ttdef"><b>Definition</b> <a href="readtiff_8h_source.html#l00006">readtiff.h:6</a></div></div>
+<div class="ttc" id="astructConstraints_html_a52bd10f95236f1c811953cdd15b1dd69"><div class="ttname"><a href="structConstraints.html#a52bd10f95236f1c811953cdd15b1dd69">Constraints::Depth_end</a></div><div class="ttdeci">int Depth_end</div><div class="ttdef"><b>Definition</b> <a href="readtiff_8h_source.html#l00006">readtiff.h:6</a></div></div>
+<div class="ttc" id="astructConstraints_html_a93f4a563293f4a91041b225b02124ebd"><div class="ttname"><a href="structConstraints.html#a93f4a563293f4a91041b225b02124ebd">Constraints::Column_begin</a></div><div class="ttdeci">int Column_begin</div><div class="ttdef"><b>Definition</b> <a href="readtiff_8h_source.html#l00006">readtiff.h:6</a></div></div>
+<div class="ttc" id="astructConstraints_html_abd52bc14151f0c215d0916f645baa3ca"><div class="ttname"><a href="structConstraints.html#abd52bc14151f0c215d0916f645baa3ca">Constraints::Depth_begin</a></div><div class="ttdeci">int Depth_begin</div><div class="ttdef"><b>Definition</b> <a href="readtiff_8h_source.html#l00006">readtiff.h:6</a></div></div>
+<div class="ttc" id="astructConstraints_html_abe46b09f46e5ba27c2aaee5704c9b535"><div class="ttname"><a href="structConstraints.html#abe46b09f46e5ba27c2aaee5704c9b535">Constraints::Column_end</a></div><div class="ttdeci">int Column_end</div><div class="ttdef"><b>Definition</b> <a href="readtiff_8h_source.html#l00006">readtiff.h:6</a></div></div>
 <div class="ttc" id="astructSimulationConfig_html"><div class="ttname"><a href="structSimulationConfig.html">SimulationConfig</a></div><div class="ttdoc">Stores all user-configurable simulation settings.</div><div class="ttdef"><b>Definition</b> <a href="SimulationConfig_8hpp_source.html#l00025">SimulationConfig.hpp:26</a></div></div>
-<div class="ttc" id="astructSimulationConfig_html_a65aa81799d69eaff58ef401a8f7e8918"><div class="ttname"><a href="structSimulationConfig.html#a65aa81799d69eaff58ef401a8f7e8918">SimulationConfig::init_cathode_particles</a></div><div class="ttdeci">std::vector&lt; double &gt; init_cathode_particles</div><div class="ttdoc">Initial lithiation of each cathode particle.</div><div class="ttdef"><b>Definition</b> <a href="SimulationConfig_8hpp_source.html#l00058">SimulationConfig.hpp:58</a></div></div>
-<div class="ttc" id="astructSimulationConfig_html_ac9fbc9409184184ca0378a701ec461be"><div class="ttname"><a href="structSimulationConfig.html#ac9fbc9409184184ca0378a701ec461be">SimulationConfig::cathode_materials</a></div><div class="ttdeci">std::vector&lt; sim::MaterialType &gt; cathode_materials</div><div class="ttdoc">Material assigned to each cathode particle.</div><div class="ttdef"><b>Definition</b> <a href="SimulationConfig_8hpp_source.html#l00061">SimulationConfig.hpp:61</a></div></div>
 <div class="ttc" id="astructSimulationConfig_html_acd7e811788fa197e96c59247d660f71a"><div class="ttname"><a href="structSimulationConfig.html#acd7e811788fa197e96c59247d660f71a">SimulationConfig::dh</a></div><div class="ttdeci">double dh</div><div class="ttdoc">Characteristic mesh spacing (m).</div><div class="ttdef"><b>Definition</b> <a href="SimulationConfig_8hpp_source.html#l00079">SimulationConfig.hpp:79</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->

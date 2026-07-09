@@ -27,6 +27,9 @@ var searchData=
   ['sitedensity_24',['SiteDensity',['../namespaceMaterialProperties.html#a6c9ea86764bd78bf0d44629ef4bc7c5a',1,'MaterialProperties']]],
   ['solverconditions_25',['SolverConditions',['../classFEMOperators.html#abedd6ef21063d6f87366e7f74c9747f9',1,'FEMOperators::SolverConditions(mfem::HypreParMatrix &amp;Mmat, mfem::CGSolver &amp;solver, mfem::Solver &amp;preconditioner)'],['../classFEMOperators.html#abba3fb2ae9712997d5eaf7fc5c187c47',1,'FEMOperators::SolverConditions(mfem::CGSolver &amp;solver, mfem::Solver &amp;preconditioner)']]],
   ['splitstring_26',['SplitString',['../SimulationConfig_8cpp.html#a99c0e0e41e60c037eacb6a7f0d3661be',1,'SimulationConfig.cpp']]],
-  ['sum_5fpairs_27',['sum_pairs',['../structSimulationState.html#aceef9d2ce5685120f62d36803d202097',1,'SimulationState']]],
-  ['sum_5fpart_28',['sum_part',['../structConcentrationBase_1_1PairCoupling.html#a4d5606ab063c7e57bdd20d771379d796',1,'ConcentrationBase::PairCoupling']]]
+  ['steps_27',['STEPS',['../namespacesim.html#a1638e34877bb22c6a29728488854bb4dac6e6543957be779d7552ff1799e8b7d4',1,'sim']]],
+  ['stop_5fmode_28',['stop_mode',['../structSimulationConfig.html#af4155777dd97e17ecb32f5d7a49fd740',1,'SimulationConfig']]],
+  ['stopmode_29',['StopMode',['../namespacesim.html#a1638e34877bb22c6a29728488854bb4d',1,'sim']]],
+  ['sum_5fpairs_30',['sum_pairs',['../structSimulationState.html#aceef9d2ce5685120f62d36803d202097',1,'SimulationState']]],
+  ['sum_5fpart_31',['sum_part',['../structConcentrationBase_1_1PairCoupling.html#a4d5606ab063c7e57bdd20d771379d796',1,'ConcentrationBase::PairCoupling']]]
 ];
